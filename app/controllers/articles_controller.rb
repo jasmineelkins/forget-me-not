@@ -39,7 +39,15 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.permit(:user_id, :newsletter_id, :title, :text, :image)
+    params.permit(
+      :user_id,
+      :newsletter_id,
+      :title,
+      :text,
+      :image,
+      :url,
+      :source,
+    )
   end
 
   def find_article

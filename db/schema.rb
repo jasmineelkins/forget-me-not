@@ -17,6 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_231933) do
     t.string "title"
     t.string "text"
     t.string "image"
+    t.string "url"
+    t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
