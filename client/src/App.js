@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import AuthBar from "./components/AuthBar";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+import Newsletter from "./components/Newsletter";
+import ReadingList from "./components/ReadingList";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  // auto log-in
+  // useEffect(() => {
+  //   fetch(`/me`)
+  //     .then((res) => res.json())
+  //     .then((userObj) => {
+  //       console.log(userObj);
+  //       if (userObj.username) {
+  //         setUser(userObj);
+  //       }
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="pageContainer">
+      <div className="contentWrap">
+        {/* <BrowserRouter> */}
+        <Header />
+        <NavBar />
+        <AuthBar />
+        <ReadingList />
+        <Newsletter />
+        <Footer />
+        {/* </BrowserRouter> */}
+      </div>
     </div>
   );
 }
