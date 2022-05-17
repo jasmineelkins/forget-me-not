@@ -4,7 +4,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     articles = Article.all
-    render json: articles
+
+    # render json: articles
+
+    render json: { message: 'Hello this is the server' }
   end
 
   # GET /articles/:id

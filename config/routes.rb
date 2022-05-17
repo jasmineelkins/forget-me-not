@@ -12,4 +12,11 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
+  # match "/alert" => "alerts#create"
+  # match "/alerts" => "alerts#get"
+  # match "/login" => "sessions#create"
+  # match "/logout" => "sessions#destroy"
+  # match "/register" => "users#create"
 end
