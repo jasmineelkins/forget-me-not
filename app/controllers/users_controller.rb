@@ -7,10 +7,34 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def create
+    # debugger
+
+    # create new User & save hashed password to db
+    user = User.create!(user_params)
+
+    # create default Newsletter for every user
+    # Newsletter.create!(headline: 'Reading List', user_id: user.id)
+
+    # Shelf.create!(name: 'Want to Read', user_id: user.id)
+    # Shelf.create!(name: 'Read', user_id: user.id)
+
+    # save user's ID in the session hash
+    session[:user_id] = user.id
+
+    # return user object json
+    render json: user, status: :created
+  end
+
   # GET /users/:id
   def show
-    user = find_user
-    render json: user
+    # if User authenticated, return user obj
+    current_user = User.find_by(id: session[:user_id])
+    if current_user
+      render json: current_user
+    else
+      render json: { error: 'Not authorized' }, status: :unauthorized
+    end
   end
 
   # POST /users
@@ -21,9 +45,18 @@ class UsersController < ApplicationController
 
   # UPDATE /users/:id
   def update
-    user = find_user
-    user.update!(user_params)
-    render json: user
+    # get current user
+    current_user = User.find_by(id: session[:user_id])
+
+    if current_user
+      current_user.update!(user_params)
+      render json: current_user
+    else
+      render json: {
+               error: 'Something went wrong',
+             },
+             status: :internal_server_error
+    end
   end
 
   # DELETE /users/:id
@@ -36,7 +69,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :username, :password_digest, :about)
+    params.permit(:name, :username, :password, :password_digest, :about)
   end
 
   def find_user
