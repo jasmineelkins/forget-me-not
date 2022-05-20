@@ -10,6 +10,7 @@ import ReadingList from "./components/ReadingList";
 import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import Signup from "./components/Signup";
+import Profile from "./components/Profile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,11 +32,16 @@ function App() {
     <div className="pageContainer">
       <div className="contentWrap">
         <BrowserRouter>
-          <Header />
           {user ? (
-            <NavBar user={user} setUser={setUser} />
+            <>
+              <NavBar user={user} setUser={setUser} />
+              <Header />
+            </>
           ) : (
-            <AuthBar user={user} setUser={setUser} />
+            <>
+              <Header />
+              <AuthBar user={user} setUser={setUser} />
+            </>
           )}
 
           <Routes>
@@ -45,6 +51,10 @@ function App() {
                 <Route
                   path="/login"
                   element={<Login user={user} setUser={setUser} />}
+                ></Route>
+                <Route
+                  path="/profile"
+                  element={<Profile user={user} setUser={setUser} />}
                 ></Route>
               </>
             ) : (

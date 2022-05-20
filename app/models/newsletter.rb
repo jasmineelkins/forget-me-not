@@ -1,4 +1,4 @@
 class Newsletter < ApplicationRecord
   has_many :articles, dependent: :destroy
-  has_many :users, through: :articles
+  belongs_to :user
 end

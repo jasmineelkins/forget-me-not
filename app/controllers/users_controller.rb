@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
 
     # create default Newsletter for every user
-    # Newsletter.create!(headline: 'Reading List', user_id: user.id)
+    puts Newsletter.create!(title: 'Reading List', user_id: user.id)
 
     # Shelf.create!(name: 'Want to Read', user_id: user.id)
     # Shelf.create!(name: 'Read', user_id: user.id)
@@ -35,12 +35,6 @@ class UsersController < ApplicationController
     else
       render json: { error: 'Not authorized' }, status: :unauthorized
     end
-  end
-
-  # POST /users
-  def create
-    new_user = User.create!(user_params)
-    render json: new_user, status: :created
   end
 
   # UPDATE /users/:id
@@ -69,7 +63,17 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :username, :password, :password_digest, :about)
+    params.permit(
+      :name,
+      :username,
+      :password,
+      :password_digest,
+      :about,
+      :location,
+      :birthday,
+      :email,
+      :receive_newsletter,
+    )
   end
 
   def find_user

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 function Header(props) {
   return (
-    <>
-      <h1>Newsletter Generator</h1>
-    </>
+    <div className="headerContainer">
+      <div className="headerImageOverlay">
+        <h1>Forget Me Not</h1>
+      </div>
+    </div>
   );
 }
 

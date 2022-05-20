@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 
 function AuthBar() {
   return (
-    <>
-      <div className="authBarContainer">
-        <Link to="/">Home</Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/login">Login</Link>
-      </div>
-    </>
+    <div className="authBarContainer">
+      <Link to="/">Home</Link>
+      <Link to="/signup">Signup</Link>
+      <Link to="/login">Login</Link>
+    </div>
   );
 }
 

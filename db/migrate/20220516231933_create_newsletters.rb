@@ -1,8 +1,9 @@
 class CreateNewsletters < ActiveRecord::Migration[7.0]
   def change
     create_table :newsletters do |t|
-      t.string :publish_date
-      t.string :headline
+      t.date :publish_date
+      t.string :title
+      t.integer :user_id
 
       t.timestamps
     end

@@ -8,4 +8,6 @@
 
 puts 'seeding...'
 
-Newsletter.create(headline: 'Reading List', publish_date: 'Friday')
+# Newsletter.create(headline: 'Reading List', publish_date: 'Friday')
+
+puts 'nothing to seed'

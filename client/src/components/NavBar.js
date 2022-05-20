@@ -22,9 +22,9 @@ function Navbar({ user, setUser }) {
       </div>
 
       <div className="navBarLinks">
-        {/* <Link to="/search">Search</Link> */}
-        {/* <Link to="/">My Books</Link> */}
         <Link to="/profile">Profile</Link>
+        <Link to="/">Reading List</Link>
+        <Link to="/">Newsletter</Link>
 
         <button onClick={handleLogoutClick} className="btn">
           Logout

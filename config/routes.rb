@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :newsletters
   resources :articles
-  resources :users
+
+  resources :users, only: %i[index create show update] do
+    resources :articles, only: %i[index show create update delete]
+    resources :newsletters, only: %i[index show create update delete]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

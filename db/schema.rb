@@ -19,13 +19,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_231933) do
     t.string "image"
     t.string "url"
     t.string "source"
+    t.integer "length"
+    t.date "read_by_date"
+    t.boolean "priority_article"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "newsletters", force: :cascade do |t|
-    t.string "publish_date"
-    t.string "headline"
+    t.date "publish_date"
+    t.string "title"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +39,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_231933) do
     t.string "username"
     t.string "password_digest"
     t.string "about"
+    t.string "location"
+    t.date "birthday"
+    t.string "email"
+    t.boolean "receive_newsletter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
