@@ -27,16 +27,29 @@ function ReadingList({ user }) {
   ));
 
   return (
-    <>
-      <h2>User's Reading List</h2>
-      <div className="readingListHeaders">
+    <div className="readingListContainer">
+      {/* <h2>User's Reading List</h2> */}
+      {/* <div className="readingListHeaders">
         <h3>Headline</h3>
         <h3>URL</h3>
         <h3>Read By</h3>
         <h3>Date Added</h3>
+      </div> */}
+      {/* <div className="articleLinksContainer">{articlesToDisplay}</div> */}
+
+      <div className="tableContainer">
+        <table className="readingListTable">
+          <tr>
+            <th>Headline</th>
+            <th>URL</th>
+            <th>Read By</th>
+            <th>Date Added</th>
+            <th>Delete?</th>
+          </tr>
+          {articlesToDisplay}
+        </table>
       </div>
-      <div className="articleLinksContainer">{articlesToDisplay}</div>
-    </>
+    </div>
   );
 }
 

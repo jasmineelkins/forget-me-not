@@ -21,6 +21,7 @@ TODO LIST:
 - _DONE_ Reading list not working.. fix
 - Reformat birthday display (but can't affect form/backend)
 - User can select 'receive email newsletter' - backend boolean updates to true
+- Reading List renders as table
 
 - Deploy to heroku
 

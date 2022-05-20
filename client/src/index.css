@@ -16,6 +16,11 @@
 
   --button-background: #acb9da;
   --button-border: #333670;
+
+  --header-background: #686ba6;
+
+  --main-font: "Actor", Verdana, sans-serif;
+  --fancy-font: "Aclonica", Verdana, sans-serif;
 }
 /* GENERAL --------------------------------------------------------- */
 * {
@@ -30,7 +35,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Actor", Verdana, sans-serif;
+  font-family: var(--main-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--medium-text);
@@ -39,7 +44,7 @@ body {
 
 button,
 select {
-  font-family: "Jost", sans-serif;
+  font-family: var(--main-font);
   padding: 1em;
   margin: 1em;
   font-size: 0.8rem;
@@ -58,11 +63,11 @@ button:active {
 
 .pageContainer {
   position: relative;
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
+  height: 100vh;
+  width: 100vw;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .contentWrap {
@@ -76,14 +81,18 @@ button:active {
 
 /* HEADER --------------------------------------------------------- */
 .headerContainer {
-  background-color: #686ba6;
+  font-family: var(--fancy-font);
+  color: var(--dark-text);
+  background-color: var(--header-background);
   width: 100%;
   height: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Aclonica", Verdana, sans-serif;
-  color: var(--dark-text);
+}
+
+.headerContainer h1 {
+  font-size: 40px;
 }
 
 .headerImageOverlay {
@@ -111,7 +120,7 @@ button:active {
 
 .homeContainer h2 {
   margin: 1em;
-  font-family: "Aclonica", Verdana, sans-serif;
+  font-family: var(--fancy-font);
 }
 
 /* NAVBAR --------------------------------------------------------- */
@@ -250,20 +259,79 @@ button:active {
 
 /* SIGNUP,LOGIN --------------------------------------------------------- */
 /* READING LIST --------------------------------------------------------- */
-.articleLinksContainer {
+.readingListContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 
-.readingListHeaders {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  border: 2px solid red;
+.tableContainer {
+  margin: 3em;
+}
+
+table {
+  border-collapse: collapse;
+  overflow: hidden;
+  /* width: 90%; */
+  border: none;
+  table-layout: fixed;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: var(--dark-background);
+  color: var(--light-text);
+  text-align: left;
+  padding: 15px;
+  font-family: "Aclonica";
+}
+
+td {
+  color: var(--dark-text);
+  background-color: rgba(255, 255, 255, 0.2);
+  overflow-wrap: break-word;
+  padding: 5px;
+}
+
+/* ---- set column widths: nth-child(1) = the first td in each tr ---- */
+td:nth-child(1) {
+  width: 200px;
+}
+
+td:nth-child(2) {
+  width: 200px;
+  max-width: 500px;
+}
+
+td:nth-child(3) {
+  width: 100px;
+}
+
+td:nth-child(4) {
+  width: 100px;
+}
+
+/* ---- hover highlight row & column ---- */
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+td,
+th {
+  position: relative;
+}
+
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  left: 0;
+  top: -5000px;
+  height: 10000px;
   width: 100%;
+  z-index: -1;
 }
 
 /* PROFILE -------------------------------------------------------------------- */
