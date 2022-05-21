@@ -12,7 +12,7 @@ TODO LIST:
 - _DONE_ Extension shows username OR link to site to log-in
 - _DONE_ Extension has link to open Newsletter web app in new tab
 - Reading List shows article title, URL, & Read-by date
-- User can edit Articles on Reading List
+- User can edit Articles (at leat the read-by date/Newsletter) on Reading List
 - User can delete Articles from Reading List
 - Extension has option to set 'read-by' date for Article
 - Logout should Navigate back to Homepage
@@ -22,6 +22,7 @@ TODO LIST:
 - Reformat birthday display (but can't affect form/backend)
 - User can select 'receive email newsletter' - backend boolean updates to true
 - Reading List renders as table
+- Scrape data from Medium to show article title and first paragraph..
 
 - Deploy to heroku
 
