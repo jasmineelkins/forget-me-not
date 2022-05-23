@@ -23,7 +23,12 @@ function ReadingList({ user }) {
   //   ));
 
   const articlesToDisplay = articleList.map((article) => (
-    <ReadingListLink article={article} key={article.id} />
+    <ReadingListLink
+      article={article}
+      key={article.id}
+      articleList={articleList}
+      setArticleList={setArticleList}
+    />
   ));
 
   return (

@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 
-function ReadingListLink({ article }) {
+function ReadingListLink({ article, articleList, setArticleList }) {
   function handleClick() {
+    const { id } = article;
+
     // DELETE article
+    fetch(`/articles/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const updatedArticleList = articleList.filter(
+          (article) => article.id !== id
+        );
+        setArticleList(updatedArticleList);
+      })
+      .catch((error) => console.log(error.message));
   }
 
   // add a way from user to UPDATE article Read By date
   return (
     <tr className="readingListLinkRow">
-      <td>Headline</td>
+      <td>{article.title}</td>
       <td>
         <a href={article.url} target="_blank" rel="noreferrer">
           {article.url}
@@ -17,7 +31,7 @@ function ReadingListLink({ article }) {
       <td>{article.read_by_date}</td>
       <td>{article.created_at}</td>
       <td>
-        <button onclick={handleClick}>X</button>
+        <button onClick={handleClick}>X</button>
       </td>
     </tr>
   );

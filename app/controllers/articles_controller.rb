@@ -18,18 +18,15 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
-    title =
-      WatirScraper.new(
-        url: params[:url],
-        css_classes: 'pw-post-title',
-        tag_name: 'h1',
-      )
+    data = MediumScraper.new(url: params[:url])
 
-    # debugger
+    debugger
 
     new_article =
       Article.create!(article_params) do |article|
-        article.title = title.text[0]
+        article.title = data.title
+        article.text = data.text
+        article.image = data.image
       end
     render json: new_article, status: :created
   end

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :newsletters
-  resources :articles do
-    match '/scrape', to: 'articles#scrape', via: :post, on: :collection
-  end
+  resources :articles
 
   resources :users, only: %i[index create show update] do
     resources :articles, only: %i[index show create update delete]

@@ -1,13 +1,20 @@
 class WatirScraper
   attr_reader :url, :browser, :text, :tag_name
 
+  # , :title, :image
+
   def initialize(url:, css_classes:, tag_name:)
     @tag_name = tag_name
     @url = url
     @browser = Watir::Browser.new(:chrome, headless: true)
     @browser.goto(url)
     wait_until_element_exists(css_classes)
+
+    # @title = get_title(css_classes)
+
     @text = get_text(css_classes)
+
+    close
   end
 
   def wait_until_element_exists(css_classes)
