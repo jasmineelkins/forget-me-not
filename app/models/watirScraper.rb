@@ -1,7 +1,7 @@
 class WatirScraper
   attr_reader :url, :browser, :text, :tag_name
 
-  def initialize(url, css_classes, tag_name)
+  def initialize(url:, css_classes:, tag_name:)
     @tag_name = tag_name
     @url = url
     @browser = Watir::Browser.new(:chrome, headless: true)

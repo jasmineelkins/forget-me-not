@@ -18,7 +18,19 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
-    new_article = Article.create!(article_params)
+    title =
+      WatirScraper.new(
+        url: params[:url],
+        css_classes: 'pw-post-title',
+        tag_name: 'h1',
+      )
+
+    # debugger
+
+    new_article =
+      Article.create!(article_params) do |article|
+        article.title = title.text[0]
+      end
     render json: new_article, status: :created
   end
 
@@ -35,6 +47,11 @@ class ArticlesController < ApplicationController
     article.destroy
     render json: {}
   end
+
+  # do something with scraped data
+  # def scrape
+  #   WatirScraper.new(data as params)
+  # end
 
   private
 
