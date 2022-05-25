@@ -31,6 +31,8 @@ TODO LIST:
 STRETCH GOALS:
 
 - _DONE_ User can log in directly through extension popup
+- _DONE_ User can save title, source, URL of any website
+- Write scrapers for other websites besides Medium...
 - New User can sign up directly through extension popup
 - User can select 'receive email newsletter' - backend boolean updates to true
 - User receives email Newsletter
@@ -46,5 +48,3 @@ STRETCH GOALS:
 
 - Each component in its own folder with separate stylesheets & test files
 - Testing!
-
-- Write scrapers for other websites besides Medium...

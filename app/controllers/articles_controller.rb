@@ -18,15 +18,20 @@ class ArticlesController < ApplicationController
 
   # POST /articles
   def create
-    data = MediumScraper.new(url: params[:url])
+    basicInfo = BasicScraper.new(url: params[:url])
+
+    mediumArticleInfo = MediumScraper.new(url: params[:url]) if basicInfo
+      .source === 'Medium'
 
     # debugger
 
     new_article =
       Article.create!(article_params) do |article|
-        article.title = data.title
-        article.text = data.text
-        article.image = data.image
+        article.title = basicInfo.title
+        if mediumArticleInfo
+          article.text = mediumArticleInfo.text
+          article.image = mediumArticleInfo.image
+        end
       end
     render json: new_article, status: :created
   end
