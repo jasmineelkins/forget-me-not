@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   def create
     data = MediumScraper.new(url: params[:url])
 
-    debugger
+    # debugger
 
     new_article =
       Article.create!(article_params) do |article|
@@ -45,11 +45,6 @@ class ArticlesController < ApplicationController
     render json: {}
   end
 
-  # do something with scraped data
-  # def scrape
-  #   WatirScraper.new(data as params)
-  # end
-
   private
 
   def article_params
@@ -61,6 +56,7 @@ class ArticlesController < ApplicationController
       :image,
       :url,
       :source,
+      :read_by_date,
     )
   end
 

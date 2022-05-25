@@ -5,6 +5,7 @@ function ReadingList({ user }) {
   const [articleList, setArticleList] = useState([]);
 
   const { id } = user;
+
   useEffect(() => {
     fetch(`/users/${id}/articles`)
       .then((res) => res.json())
@@ -14,13 +15,6 @@ function ReadingList({ user }) {
       })
       .catch((error) => console.log(error.message));
   }, [id]);
-
-  //   const articlesToDisplay = articleList.map((article) => (
-  //     <a href={article.url} key={article.id}>
-  //       {" "}
-  //       {article.url}
-  //     </a>
-  //   ));
 
   const articlesToDisplay = articleList.map((article) => (
     <ReadingListLink
@@ -33,25 +27,19 @@ function ReadingList({ user }) {
 
   return (
     <div className="readingListContainer">
-      {/* <h2>User's Reading List</h2> */}
-      {/* <div className="readingListHeaders">
-        <h3>Headline</h3>
-        <h3>URL</h3>
-        <h3>Read By</h3>
-        <h3>Date Added</h3>
-      </div> */}
-      {/* <div className="articleLinksContainer">{articlesToDisplay}</div> */}
-
       <div className="tableContainer">
         <table className="readingListTable">
-          <tr>
-            <th>Headline</th>
-            <th>URL</th>
-            <th>Read By</th>
-            <th>Date Added</th>
-            <th>Delete?</th>
-          </tr>
-          {articlesToDisplay}
+          <thead>
+            <tr>
+              <th>Headline</th>
+              <th>URL</th>
+              <th>Read By</th>
+              <th>Date Added</th>
+              <th>Delete?</th>
+            </tr>
+          </thead>
+
+          <tbody>{articlesToDisplay}</tbody>
         </table>
       </div>
     </div>

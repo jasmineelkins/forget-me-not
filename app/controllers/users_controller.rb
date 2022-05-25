@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  # POST /users
   def create
     # debugger
 
@@ -15,9 +16,6 @@ class UsersController < ApplicationController
 
     # create default Newsletter for every user
     puts Newsletter.create!(title: 'Reading List', user_id: user.id)
-
-    # Shelf.create!(name: 'Want to Read', user_id: user.id)
-    # Shelf.create!(name: 'Read', user_id: user.id)
 
     # save user's ID in the session hash
     session[:user_id] = user.id

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 function ReadingListLink({ article, articleList, setArticleList }) {
+  // const [readByDate, setReadByDate] = useState();
+
   function handleClick() {
     const { id } = article;
 
@@ -22,7 +24,7 @@ function ReadingListLink({ article, articleList, setArticleList }) {
   // add a way from user to UPDATE article Read By date
   return (
     <tr className="readingListLinkRow">
-      <td>{article.title}</td>
+      <td className="linkTitle">{article.title}</td>
       <td>
         <a href={article.url} target="_blank" rel="noreferrer">
           {article.url}

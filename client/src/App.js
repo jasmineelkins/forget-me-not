@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
+import RandomArticle from "./components/RandomArticle";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -56,6 +57,14 @@ function App() {
                   path="/profile"
                   element={<Profile user={user} setUser={setUser} />}
                 ></Route>
+                <Route
+                  path="/newsletter"
+                  element={<Newsletter user={user} />}
+                ></Route>
+                <Route
+                  path="/random"
+                  element={<RandomArticle user={user} />}
+                ></Route>
               </>
             ) : (
               <>
@@ -73,7 +82,6 @@ function App() {
             )}
           </Routes>
 
-          <Newsletter />
           <Footer />
         </BrowserRouter>
       </div>
