@@ -23,14 +23,23 @@ class ArticlesController < ApplicationController
     mediumArticleInfo = MediumScraper.new(url: params[:url]) if basicInfo
       .source === 'Medium'
 
+    newYorkerArticleInfo = NyScraper.new(url: params[:url]) if basicInfo
+      .source === 'The New Yorker'
+
     # debugger
 
     new_article =
       Article.create!(article_params) do |article|
-        article.title = basicInfo.title
         if mediumArticleInfo
+          article.title = mediumArticleInfo.title
           article.text = mediumArticleInfo.text
           article.image = mediumArticleInfo.image
+        elsif newYorkerArticleInfo
+          article.title = basicInfo.title.split(' | ')[0]
+          article.text = newYorkerArticleInfo.text
+          article.image = newYorkerArticleInfo.image
+        else
+          article.title = basicInfo.title
         end
       end
     render json: new_article, status: :created

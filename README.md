@@ -27,6 +27,7 @@ TODO LIST:
 - User can choose how many articles to receive (next: how much content/reading time)
 - Next feature: push to top to make sure will be included in next version, or push to bottom
 - Footer with my info
+- also save alt text when grabbing image urls (edit db schema)
 
 STRETCH GOALS:
 
@@ -48,3 +49,10 @@ STRETCH GOALS:
 
 - Each component in its own folder with separate stylesheets & test files
 - Testing!
+
+WEEKEND GOALS:
+
+- Finish formatting newsletter
+- Set up email
+- Deploy!
+- Web sockets to auto reload Reading List (and Newsletter?) when article added (+ Toast!)

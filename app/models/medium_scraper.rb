@@ -32,3 +32,15 @@ class MediumScraper
     @browser.close
   end
 end
+
+# get article title
+# test = WatirScraper.new(url: 'https://doctorow.medium.com/the-impossible-scam-of-us-drug-plans-5ab66b6
+#     b017e', css_classes: 'pw-post-title', tag_name: 'h1')
+
+# get article sub-title
+# test = WatirScraper.new(url: 'https://doctorow.medium.com/the-impossible-scam-of-us-drug-plans-5ab66b6
+#     b017e', css_classes: '# pw-subtitle-paragraph', tag_name: 'h2')
+
+# get body paragraph text:
+# test = WatirScraper.new(url: 'https://doctorow.medium.com/the-impossible-scam-of-us-drug-plans-5ab66b6
+#     b017e', css_classes: 'pw-post-body-paragraph', tag_name: 'p')
