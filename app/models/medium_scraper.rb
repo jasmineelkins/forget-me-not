@@ -8,7 +8,7 @@ class MediumScraper
     wait_until_element_exists
 
     @title = get_text('pw-post-title')[0]
-    @text = get_text('pw-post-body-paragraph')[0]
+    @text = get_text('pw-post-body-paragraph').join(' ')
     @image = get_image_url
 
     close

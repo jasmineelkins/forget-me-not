@@ -48,7 +48,7 @@ function App() {
           <Routes>
             {user ? (
               <>
-                <Route path="/" element={<ReadingList user={user} />}></Route>
+                <Route path="/" element={<Newsletter user={user} />}></Route>
                 <Route
                   path="/login"
                   element={<Login user={user} setUser={setUser} />}
@@ -58,8 +58,8 @@ function App() {
                   element={<Profile user={user} setUser={setUser} />}
                 ></Route>
                 <Route
-                  path="/newsletter"
-                  element={<Newsletter user={user} />}
+                  path="/reading-list"
+                  element={<ReadingList user={user} />}
                 ></Route>
                 <Route
                   path="/random"
@@ -82,7 +82,7 @@ function App() {
             )}
           </Routes>
 
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     </div>

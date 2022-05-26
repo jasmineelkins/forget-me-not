@@ -18,13 +18,13 @@ function Navbar({ user, setUser }) {
   return (
     <div className="navBarContainer">
       <div className="welcomeMessage">
-        {user ? <h3>Hi, {user.name}!</h3> : <span></span>}
+        {user ? <h3>Hi, {user.name}</h3> : <span></span>}
       </div>
 
       <div className="navBarLinks">
         <Link to="/profile">Profile</Link>
-        <Link to="/">Reading List</Link>
-        <Link to="/newsletter">Newsletter</Link>
+        <Link to="/reading-list">Reading List</Link>
+        <Link to="/">Newsletter</Link>
         {/* <Link to="/random">Random</Link> */}
 
         <button onClick={handleLogoutClick} className="btn logoutBtn">

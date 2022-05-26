@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 
-function Article({ article }) {
+function ArticleListItem({ article }) {
   let textPreview;
 
   if (article.text) {
-    textPreview = `${article.text.slice(0, 300)}...`;
+    textPreview = `${article.text.slice(0, 60)}...`;
   } else {
     textPreview = null;
   }
   return (
-    <div className="articleContainer">
+    <div className="articleListItemContainer">
       <h4>{article.title}</h4>
       <p>{textPreview}</p>
+
       <a href={article.url} target="_blank" rel="noreferrer">
         <MdOpenInNew />
       </a>
@@ -20,4 +21,4 @@ function Article({ article }) {
   );
 }
 
-export default Article;
+export default ArticleListItem;

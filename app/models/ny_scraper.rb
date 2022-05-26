@@ -8,7 +8,7 @@ class NyScraper
 
     wait_until_element_exists
 
-    @text = get_text('has-dropcap')
+    @text = get_text('has-dropcap').join(' ')
     @image = get_image_url
 
     close

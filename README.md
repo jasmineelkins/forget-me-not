@@ -20,8 +20,8 @@ TODO LIST:
 - _DONE_ Reading List renders as table
 - _DONE_ Scrape data from Medium to show article title and first paragraph..
 - _DONE_ User can choose frequency: weekly or monthly
-- User can edit Articles (at leat the read-by date/Newsletter) on Reading List ?
-- Login should Navigate directly to user Newsletter (once it's configured)? Or to Random full article?
+- _DONE_ Login should Navigate directly to user Newsletter (once it's configured)? Or to Random full article?
+- User can edit Articles on Reading List - at least the read-by date/Newsletter
 - Reformat birthday display (but can't affect form/backend)
 - User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
 - User can choose how many articles to receive (next: how much content/reading time)
@@ -53,6 +53,6 @@ STRETCH GOALS:
 WEEKEND GOALS:
 
 - Finish formatting newsletter
-- Set up email
+- Set up mailer (both with manual button, and timing)
 - Deploy!
 - Web sockets to auto reload Reading List (and Newsletter?) when article added (+ Toast!)

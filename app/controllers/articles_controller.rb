@@ -30,6 +30,8 @@ class ArticlesController < ApplicationController
 
     new_article =
       Article.create!(article_params) do |article|
+        article.source = basicInfo.source
+
         if mediumArticleInfo
           article.title = mediumArticleInfo.title
           article.text = mediumArticleInfo.text
