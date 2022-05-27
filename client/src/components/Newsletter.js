@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Article from "./Article";
 import PriorityArticle from "./PriorityArticle";
 import ArticleListItem from "./ArticleListItem";
+import Weather from "./Weather";
 
 function Newsletter({ user }) {
   const [articleList, setArticleList] = useState([]);
@@ -59,8 +60,12 @@ function Newsletter({ user }) {
       <div className="newsletter">
         <div className="newsletterHeader item1">
           <div className="newsletterHoroscope"></div>
+
           <h3>Weekly</h3>
-          <div className="newsletterWeather"></div>
+
+          <div className="newsletterWeather">
+            <Weather />
+          </div>
         </div>
 
         <div className="newsletterLeft item2">{priorityToDisplay}</div>

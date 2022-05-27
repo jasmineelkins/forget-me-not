@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/weather', to: 'weather#get_weather'
+
   # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
   # match "/alert" => "alerts#create"
   # match "/alerts" => "alerts#get"

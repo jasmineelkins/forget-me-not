@@ -54,3 +54,5 @@ gem 'webdrivers'
 # getting warnings related to gem dependencies when opening rails c, hopefully
 # this will fix it:
 gem "net-http"
+
+gem 'httparty'
