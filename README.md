@@ -26,8 +26,9 @@ TODO LIST:
 - User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
 - User can choose how many articles to receive (next: how much content/reading time)
 - Next feature: push to top to make sure will be included in next version, or push to bottom
-- Footer with my info
+- Footer with my info **need to fix styling**
 - also save alt text when grabbing image urls (edit db schema)
+- Add 'link to download extension' on Home page
 
 STRETCH GOALS:
 
@@ -42,7 +43,8 @@ STRETCH GOALS:
 - Reading List re-renders automatically when backend is updated (Firebase? Sockets?)
 - User can see a randomly chosen Article from the database (home page?)
 - Deploy to heroku
-- Toast when link is added to Newsletter - can it render outside of popup?
+- Toast when link is added to Newsletter - can it render outside of popup? Or have it triggered by backend/sockets??
+- Publish extension to Chrome store
 
 - Get horoscope from API
 - Get local weather from API
