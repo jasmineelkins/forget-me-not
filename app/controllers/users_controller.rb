@@ -15,10 +15,13 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
 
     # create default Newsletter for every user
-    puts Newsletter.create!(title: 'Reading List', user_id: user.id)
+    # puts Newsletter.create!(title: 'Reading List', user_id: user.id)
 
     # save user's ID in the session hash
     session[:user_id] = user.id
+
+    # redirect
+    # redirect_to root_path, notice: 'Successfully created user'
 
     # return user object json
     render json: user, status: :created
@@ -27,11 +30,12 @@ class UsersController < ApplicationController
   # GET /users/:id
   def show
     # if User authenticated, return user obj
+    # puts session[:user_id]
     current_user = User.find_by(id: session[:user_id])
     if current_user
       render json: current_user
     else
-      render json: { error: 'Not authorized' }, status: :unauthorized
+      render json: { error: 'Not authorized**' }, status: :unauthorized
     end
   end
 

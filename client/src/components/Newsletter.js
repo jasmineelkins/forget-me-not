@@ -5,7 +5,7 @@ import ArticleListItem from "./ArticleListItem";
 
 function Newsletter({ user }) {
   const [articleList, setArticleList] = useState([]);
-  // const [priorityArticle, setPriorityArticle] = useState({});
+  const [priorityArticle, setPriorityArticle] = useState({});
 
   const { id } = user;
 
@@ -33,17 +33,22 @@ function Newsletter({ user }) {
 
   //
 
-  const selectPriorityArticle = articleList.filter(
-    (article) => article.id === 47
-  );
+  // const selectPriorityArticle = articleList.filter(
+  //   (article) => article.id === 47
+  // );
 
-  console.log(selectPriorityArticle);
-  const priorityToDisplay = selectPriorityArticle.map((article) => (
-    <PriorityArticle article={article} key={article.id} />
-  ));
+  // useEffect(() => {
+  //   setPriorityArticle(articleList[0]);
+  // }, [articleList]);
+  // const priorityArticle = articleList[0];
+
+  // console.log(selectPriorityArticle);
+  // const priorityToDisplay = selectPriorityArticle.map((article) => (
+  //   <PriorityArticle article={article} key={article.id} />
+  // ));
   // setPriorityArticle(selectPriorityArticle[0]);
 
-  const middleArticles = articleList.slice(0, 4);
+  const middleArticles = articleList.slice(1, 4);
   const middleArticlesToDisplay = middleArticles.map((article) => (
     <Article article={article} key={article.id} />
   ));
@@ -63,7 +68,9 @@ function Newsletter({ user }) {
           <div className="newsletterWeather"></div>
         </div>
 
-        <div className="newsletterLeft item2">{priorityToDisplay}</div>
+        <div className="newsletterLeft item2">
+          {/* <PriorityArticle key={priorityArticle.id} article={priorityArticle} /> */}
+        </div>
         <div className="newsletterCenter item3">{middleArticlesToDisplay}</div>
         <div className="newsletterRight item4">{rightArticlesToDisplay}</div>
       </div>
