@@ -24,7 +24,7 @@ function ReadingListLink({ article, articleList, setArticleList }) {
   // add a way from user to UPDATE article Read By date
   return (
     <tr className="readingListLinkRow">
-      <td className="linkTitle">{article.title}</td>
+      <td className="linkTitle">{article.headline}</td>
       <td>
         <a href={article.url} target="_blank" rel="noreferrer">
           {article.url}

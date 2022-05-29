@@ -1,5 +1,5 @@
 class MediumScraper
-  attr_reader :url, :browser, :title, :text, :image
+  attr_reader :url, :browser, :headline, :text, :image
 
   def initialize(url:)
     @url = url
@@ -7,17 +7,13 @@ class MediumScraper
     @browser.goto(url)
     wait_until_element_exists
 
-    @title = get_text('pw-post-title')[0]
-    @text = get_text('pw-post-body-paragraph')[0]
-    @image = get_image_url
+    @headline = @text = @image = get_image_url
 
     close
   end
 
   def wait_until_element_exists
-    browser
-      .element(class: 'pw-post-title', tag_name: 'h1')
-      .wait_until(&:exists?)
+    browser.element(class: '').wait_until(&:exists?)
   end
 
   def get_text(css_classes)

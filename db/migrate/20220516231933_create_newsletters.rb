@@ -3,7 +3,7 @@ class CreateNewsletters < ActiveRecord::Migration[7.0]
     create_table :newsletters do |t|
       t.string :title
       t.date :publish_date
-      t.string :type
+      t.string :frequency
       t.integer :user_id
       t.boolean :sent
 

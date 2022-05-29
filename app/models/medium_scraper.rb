@@ -1,5 +1,5 @@
 class MediumScraper
-  attr_reader :url, :browser, :title, :text, :image
+  attr_reader :url, :browser, :headline, :text, :image
 
   def initialize(url:)
     @url = url
@@ -7,7 +7,7 @@ class MediumScraper
     @browser.goto(url)
     wait_until_element_exists
 
-    @title = get_text('pw-post-title')[0]
+    @headline = get_text('pw-post-title')[0]
     @text = get_text('pw-post-body-paragraph').join(' ')
     @image = get_image_url
 
@@ -33,7 +33,7 @@ class MediumScraper
   end
 end
 
-# get article title
+# get article headline
 # test = WatirScraper.new(url: 'https://doctorow.medium.com/the-impossible-scam-of-us-drug-plans-5ab66b6
 #     b017e', css_classes: 'pw-post-title', tag_name: 'h1')
 

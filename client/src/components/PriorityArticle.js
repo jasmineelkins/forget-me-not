@@ -11,7 +11,7 @@ function PriorityArticle({ article }) {
   }
   return (
     <div className="priorityArticleContainer">
-      <h4>{article.title}</h4>
+      <h4>{article.headline}</h4>
       <img
         src="https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
         alt="placeholder"

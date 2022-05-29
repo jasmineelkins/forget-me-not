@@ -11,7 +11,7 @@ function Article({ article }) {
   }
   return (
     <div className="articleContainer">
-      <h4>{article.title}</h4>
+      <h4>{article.headline}</h4>
       <p>{textPreview}</p>
       <a href={article.url} target="_blank" rel="noreferrer">
         <MdOpenInNew />

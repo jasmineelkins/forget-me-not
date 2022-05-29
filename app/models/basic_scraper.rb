@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class BasicScraper
-  attr_reader :url, :html, :parsed_html, :title, :source
+  attr_reader :url, :html, :parsed_html, :headline, :source
 
   def initialize(url:)
     @url = url
@@ -9,7 +9,7 @@ class BasicScraper
     open_uri
     parse_html
 
-    @title = get_title[0]
+    @headline = get_headline[0]
     @source = get_source
   end
 
@@ -21,7 +21,7 @@ class BasicScraper
     @parsed_html = Nokogiri::HTML.parse(html)
   end
 
-  def get_title
+  def get_headline
     parsed_html.css('title').map { |element| element.text }
   end
 

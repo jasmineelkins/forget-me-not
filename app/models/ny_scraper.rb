@@ -1,5 +1,5 @@
 class NyScraper
-  attr_reader :url, :browser, :title, :text, :image
+  attr_reader :url, :browser, :headline, :text, :image
 
   def initialize(url:)
     @url = url
@@ -36,7 +36,7 @@ end
 
 # picture class='ResponsiveImagePicture' img class='ResponsiveImageContainer'
 
-# to get title:
+# to get headline:
 # new.get_text('BaseWrap-sc-TURhJ')[3]
 # new.get_text('ContentHeaderDek-uqvGp')
 

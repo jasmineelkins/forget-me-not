@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_231933) do
   create_table "newsletters", force: :cascade do |t|
     t.string "title"
     t.date "publish_date"
-    t.string "type"
+    t.string "frequency"
     t.integer "user_id"
     t.boolean "sent"
     t.datetime "created_at", null: false

@@ -33,15 +33,15 @@ class ArticlesController < ApplicationController
         article.source = basicInfo.source
 
         if mediumArticleInfo
-          article.title = mediumArticleInfo.title
+          article.headline = mediumArticleInfo.headline
           article.text = mediumArticleInfo.text
           article.image = mediumArticleInfo.image
         elsif newYorkerArticleInfo
-          article.title = basicInfo.title.split(' | ')[0]
+          article.headline = basicInfo.headline.split(' | ')[0]
           article.text = newYorkerArticleInfo.text
           article.image = newYorkerArticleInfo.image
         else
-          article.title = basicInfo.title
+          article.headline = basicInfo.headline
         end
       end
     render json: new_article, status: :created
@@ -67,12 +67,15 @@ class ArticlesController < ApplicationController
     params.permit(
       :user_id,
       :newsletter_id,
-      :title,
+      :headline,
       :text,
       :image,
       :url,
       :source,
-      :read_by_date,
+      :length,
+      :send_date,
+      :priority,
+      :completed,
     )
   end
 

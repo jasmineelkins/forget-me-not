@@ -15,6 +15,11 @@ class NewslettersController < ApplicationController
 
   # POST /newsletters
   def create
+    # puts session[:user_id]
+
+    # make sure user id comes from session:
+    # newsletter_params[:user_id] = session[:user_id] -HOW?
+
     new_newsletter = Newsletter.create!(newsletter_params)
     render json: new_newsletter, status: :created
   end
@@ -36,7 +41,7 @@ class NewslettersController < ApplicationController
   private
 
   def newsletter_params
-    params.permit(:publish_date, :headline)
+    params.permit(:publish_date, :title, :sent, :frequency, :user_id)
   end
 
   def find_newsletter
