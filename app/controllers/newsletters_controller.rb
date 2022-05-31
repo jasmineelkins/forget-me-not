@@ -10,7 +10,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters/:id
   def show
     newsletter = find_newsletter
-    render json: newsletter
+    render json: newsletter, include: :articles
   end
 
   # POST /newsletters
@@ -37,6 +37,11 @@ class NewslettersController < ApplicationController
     newsletter.destroy
     render json: {}
   end
+
+  # send test email
+  # def method_name
+
+  # end
 
   private
 

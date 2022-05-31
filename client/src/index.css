@@ -486,6 +486,12 @@ input[type="checkbox"]:focus {
   border-right: 10px solid transparent;
 }
 
+.newsletterTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .newsletterContainer {
   margin: 2em;
   width: 90%;

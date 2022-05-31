@@ -62,6 +62,13 @@ class UsersController < ApplicationController
     render json: {}
   end
 
+  # send User test email
+  def send_test_email
+    @current_user = User.find_by(id: session[:user_id])
+
+    UserTestMailer.send_test_email(@current_user).deliver if @current_user
+  end
+
   private
 
   def user_params

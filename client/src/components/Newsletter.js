@@ -79,18 +79,31 @@ function Newsletter({ user }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  function handleManualSend() {
+    fetch(`/send_test`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error.message));
+  }
+
   return (
     <div className="newsletterContainer">
-      <div className="frequencySelector">
-        <select
-          id="select"
-          name="frequency"
-          defaultValue="weekly"
-          onChange={(e) => handleFrequencySelection(e)}
-        >
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-        </select>
+      <div className="newsletterTop">
+        <div className="frequencySelector">
+          <select
+            id="select"
+            name="frequency"
+            defaultValue="weekly"
+            onChange={(e) => handleFrequencySelection(e)}
+          >
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+
+        <div>
+          <button onClick={handleManualSend}>Send Newsletter</button>
+        </div>
       </div>
       <div className="newsletter">
         <div className="newsletterHeader item1">

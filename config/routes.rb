@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/send_test', to: 'users#send_test_email'
+
   # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
   # match "/alert" => "alerts#create"
   # match "/alerts" => "alerts#get"
