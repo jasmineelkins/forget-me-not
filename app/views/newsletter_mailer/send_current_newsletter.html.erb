@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.name %>!</h1>
+    <h2>Welcome to your Newsletter</h2>
+    <h3> <%= @current_newsletter.articles[0].headline %> </h3>
+    <p> <%= @current_newsletter.articles[0].text %> </p>
+
+    <h4> <%= @current_newsletter.articles[1].headline %> </h4>
+    <p> <%= @current_newsletter.articles[1].text %> </p>
+
+    <h4> <%= @current_newsletter.articles[1].headline %> </h4>
+    <p> <%= @current_newsletter.articles[1].text %> </p>
+
+  </body>
+</html>

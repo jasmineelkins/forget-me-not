@@ -80,7 +80,7 @@ function Newsletter({ user }) {
   }
 
   function handleManualSend() {
-    fetch(`/send_test`)
+    fetch(`/send_current_newsletter/${selectedFrequency}`)
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error.message));

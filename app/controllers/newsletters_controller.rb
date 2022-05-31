@@ -39,8 +39,26 @@ class NewslettersController < ApplicationController
   end
 
   # send test email
-  # def method_name
+  def send_current_newsletter
+    @current_user = User.find_by(id: session[:user_id])
 
+    # @message = 'Enter a custom message'
+    @current_newsletter =
+      @current_user.newsletters.find_by(frequency: params[:frequency])
+
+    if @current_user
+      NewsletterMailer.send_current_newsletter(
+        @current_user,
+        @current_newsletter,
+      ).deliver
+    end
+  end
+
+  # # send User test email
+  # def send_test_email
+  #   @current_user = User.find_by(id: session[:user_id])
+
+  #   UserTestMailer.send_test_email(@current_user).deliver if @current_user
   # end
 
   private

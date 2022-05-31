@@ -30,6 +30,7 @@ TODO LIST:
 - also save alt text when grabbing image urls (edit db schema)
 - Add 'link to download extension' on Home page
 - Rewrite fetch calls as async/await
+- New email for Forget Me Not sender
 
 STRETCH GOALS:
 

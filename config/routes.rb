@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/send_test', to: 'users#send_test_email'
+  get '/send_current_newsletter/:frequency',
+      to: 'newsletters#send_current_newsletter'
 
   # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
   # match "/alert" => "alerts#create"
