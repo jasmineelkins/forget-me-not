@@ -4,7 +4,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters
   def index
     newsletters = Newsletter.all
-    render json: newsletters
+    render json: newsletters, include: :articles
   end
 
   # GET /newsletters/:id

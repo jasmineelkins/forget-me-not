@@ -437,6 +437,35 @@ th:hover::after {
   margin: 5px;
 }
 
+/* Customize checkboxes */
+/* input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+
+/* create custom checkbox appearance */
+/* display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 6px; */
+
+/* background-color only for content */
+/* background-clip: content-box;
+  border: 1.5px solid rgb(250, 234, 228);
+  border-radius: 6px;
+  background-color: rgb(250, 234, 228);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: rgb(145, 39, 94);
+}
+
+input[type="checkbox"]:focus {
+  outline: none !important;
+} */
+
 /* RANDOM ARTICLE --------------------------------------------------------- */
 .randomContainer,
 .newsletterContainer {
@@ -452,6 +481,11 @@ th:hover::after {
 }
 
 /* NEWSLETTER --------------------------------------------------------- */
+#select {
+  border: none;
+  border-right: 10px solid transparent;
+}
+
 .newsletterContainer {
   margin: 2em;
   width: 90%;

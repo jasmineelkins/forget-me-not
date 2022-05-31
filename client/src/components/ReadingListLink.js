@@ -30,7 +30,7 @@ function ReadingListLink({ article, articleList, setArticleList }) {
           {article.url}
         </a>
       </td>
-      <td>{article.read_by_date}</td>
+      <td>{article.send_date}</td>
       <td>{article.created_at}</td>
       <td>
         <button onClick={handleClick}>X</button>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BsCheck2Square, BsSquare } from "react-icons/bs";
 
 function Profile({ user, setUser }) {
   const defaultProfileForm = {
@@ -10,12 +11,14 @@ function Profile({ user, setUser }) {
     email: user.email,
     location: user.location,
     birthday: user.birthday,
+    email_newsletter: user.receive_newsletter,
   };
 
   const [editModeOff, setEditModeOff] = useState(true);
   const [profileFormData, setProfileFormData] = useState({
     defaultProfileForm,
   });
+  const [isChecked, setIsChecked] = useState(user.receive_newsletter);
 
   useEffect(() => {
     fetch(`/users/${user.id}`)
@@ -35,13 +38,27 @@ function Profile({ user, setUser }) {
   }
 
   function handleChange(e) {
-    setProfileFormData({ ...profileFormData, [e.target.name]: e.target.value });
+    // setIsChecked(!isChecked);
+
+    console.log(e.target.value, e.target.type);
+
+    if (e.target.type === "checkbox") {
+      setProfileFormData({
+        ...profileFormData,
+        [e.target.name]: e.target.checked,
+      });
+    } else {
+      setProfileFormData({
+        ...profileFormData,
+        [e.target.name]: e.target.value,
+      });
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // console.log(profileFormData);
+    console.log(profileFormData);
 
     // UPDATE user info
     fetch(`/users/${user.id}`, {
@@ -59,6 +76,7 @@ function Profile({ user, setUser }) {
         email: profileFormData.email,
         location: profileFormData.location,
         birthday: profileFormData.birthday,
+        receive_newsletter: profileFormData.receive_newsletter,
       }),
     })
       .then((res) => res.json())
@@ -79,10 +97,31 @@ function Profile({ user, setUser }) {
       email: profileFormData.email,
       location: profileFormData.location,
       birthday: profileFormData.birthday,
+      receive_newsletter: isChecked,
     });
 
     //turn off edit mode - back to profile, not form
     setEditModeOff(true);
+  }
+
+  function handleCheckedClick(e) {
+    setIsChecked(!isChecked);
+
+    // PATCH checkbox input data
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3002",
+      },
+      body: JSON.stringify({
+        receive_newsletter: !isChecked,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("PATCH after checkbox: ", data))
+      .catch((error) => console.log(error.message));
   }
 
   const formattedBirthday = user.birthday ? user.birthday.slice(5, 10) : null;
@@ -137,7 +176,17 @@ function Profile({ user, setUser }) {
           <div className="profileRow">
             <span className="profileLabel">Email Newsletter?</span>
             <div className="rightSpanDiv">
-              <span className="profileSpan">{user.receive_newsletter}</span>
+              <span className="profileSpan">
+                {user.receive_newsletter ? <BsCheck2Square /> : <BsSquare />}
+              </span>
+              {/* <span className="profileSpan">
+                <input
+                  name="newsletter"
+                  type="checkbox"
+                  checked={user.receive_newsletter}
+                  onChange={(e) => handleChange(e)}
+                ></input>
+              </span> */}
             </div>
           </div>
 
@@ -197,11 +246,24 @@ function Profile({ user, setUser }) {
             ></input>
           </div>
 
+          {/* <div className="formRow">
+            <label>Email Newsletter?</label>
+            <input
+              name="receive_newsletter"
+              type="text"
+              value={profileFormData.receive_newsletter}
+              onChange={(e) => handleChange(e)}
+            ></input>
+          </div> */}
+
           <div className="formRow">
             <label>Email Newsletter?</label>
             <input
-              name="newsletter"
-              value={profileFormData.receive_newsletter}
+              name="receive_newsletter"
+              type="checkbox"
+              checked={
+                profileFormData.receive_newsletter === true ? true : false
+              }
               onChange={(e) => handleChange(e)}
             ></input>
           </div>

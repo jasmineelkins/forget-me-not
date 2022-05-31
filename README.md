@@ -29,12 +29,16 @@ TODO LIST:
 - Footer with my info **need to fix styling**
 - also save alt text when grabbing image urls (edit db schema)
 - Add 'link to download extension' on Home page
+- Rewrite fetch calls as async/await
 
 STRETCH GOALS:
 
 - _DONE_ User can log in directly through extension popup
 - _DONE_ User can save title, source, URL of any website
-- Write scrapers for other websites besides Medium...
+- Write scrapers for other websites besides Medium:
+- _DONE_ New Yorker
+- New York Times
+- Slashdot
 - New User can sign up directly through extension popup
 - User can select 'receive email newsletter' - backend boolean updates to true
 - User receives email Newsletter
@@ -51,6 +55,8 @@ STRETCH GOALS:
 
 - Each component in its own folder with separate stylesheets & test files
 - Testing!
+
+- Change Profile form to click each individual input to update..
 
 WEEKEND GOALS:
 
