@@ -31,28 +31,33 @@ TODO LIST:
 - Add 'link to download extension' on Home page
 - Rewrite fetch calls as async/await
 - New email for Forget Me Not sender
+  **_instead of grabbing all text - get individual paragraphs from Medium, other sites if possible_**
+- add link to open articles from Newsletter
+- Email: Iterate through all articles instead of hardcoding
 
 STRETCH GOALS:
 
 - _DONE_ User can log in directly through extension popup
 - _DONE_ User can save title, source, URL of any website
-- Write scrapers for other websites besides Medium:
-- _DONE_ New Yorker
-- New York Times
-- Slashdot
 - New User can sign up directly through extension popup
-- User can select 'receive email newsletter' - backend boolean updates to true
-- User receives email Newsletter
+- _DONE_ User can select 'receive email newsletter' - backend boolean updates to true
+- _DONE_ User receives currently selected email Newsletter manually (on click)
+- User receives email Newsletter at set time (Cron job?)
 - Email Newsletter is formatted like a real newspaper
   - User can mark one article as "priority", which makes it headliner in next Newsletter edition (from specific sites only)
 - Reading List re-renders automatically when backend is updated (Firebase? Sockets?)
 - User can see a randomly chosen Article from the database (home page?)
 - Deploy to heroku
-- Toast when link is added to Newsletter - can it render outside of popup? Or have it triggered by backend/sockets??
+- _DONE_ Toast when link is added to Newsletter
 - Publish extension to Chrome store
 
 - Get horoscope from API
 - Get local weather from API
+
+- Write scrapers for other websites besides Medium:
+- _DONE_ New Yorker
+- New York Times
+- Slashdot
 
 - Each component in its own folder with separate stylesheets & test files
 - Testing!
@@ -61,7 +66,7 @@ STRETCH GOALS:
 
 WEEKEND GOALS:
 
-- Finish formatting newsletter
-- Set up mailer (both with manual button, and timing)
+- _DONE_ Finish formatting newsletter
+- _DONE_ Set up mailer with manual button
 - Deploy!
 - Web sockets to auto reload Reading List (and Newsletter?) when article added (+ Toast!)

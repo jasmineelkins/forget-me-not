@@ -3,17 +3,421 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
+
   <body>
-    <h1>Hello, <%= @user.name %>!</h1>
-    <h2>Welcome to your Newsletter</h2>
-    <h3> <%= @current_newsletter.articles[0].headline %> </h3>
-    <p> <%= @current_newsletter.articles[0].text %> </p>
+    <table
+      width="100%"
+      border="0"
+      align="center"
+      cellpadding="0"
+      cellspacing="0"
+      style="
+        background-color:#c3d3e5;"
+    >
+    
+    <!--HEADER -->
+      <tbody>
+        <tr>
+          <td align="center">
+            <table
+              class="col-header"
+              width="100%"
+              border="0"
+              align="center"
+              cellpadding="0"
+              cellspacing="0"
+            >
+              <tbody>
+                <tr>
+                  <td
+                    align="center"
+                    valign="top"
+                    background="https://res.cloudinary.com/dbl7owtdh/image/upload/v1654027359/Forget%20Me%20Not/email_header_rvt7i6.png"
+                    style="
+                      background-size: cover;
+                      background-position: center;
+                      height: 200;
+                    "
+                  >
+                  <table
+                      class="col-600"
+                      width="600"
+                      height="200"
+                      border="0"
+                      align="center"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+                        <tr>
+                          <td height="40"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
 
-    <h4> <%= @current_newsletter.articles[1].headline %> </h4>
-    <p> <%= @current_newsletter.articles[1].text %> </p>
+    <!-- END HEADER -->
 
-    <h4> <%= @current_newsletter.articles[1].headline %> </h4>
-    <p> <%= @current_newsletter.articles[1].text %> </p>
+    <!-- START ARTICLES -->
+        <tr>
+          <td align="center">
+            <table
+              class="left-column
+              "
+              width="810
+              "
+              border="0"
+              align="center"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                margin: 20px 20px 0 20px;
+                border-top: 2px solid #333670;
+                border-right: 2px solid #333670;
+                border-left: 2px solid #333670;
+                border-radius: 25px 25px 0 0;
+              "
+            >
+              <tbody>
+                <%# <tr>
+                  <td height="10"></td>
+                </tr> %>
+
+                <tr>
+                  <td
+                    align="center"
+                    style="
+                      font-family: 'Trebuchet MS', Arial, sans-serif;
+                      font-size: 22px;
+                      font-weight: bold;
+                      color: #110f61;
+                      padding: 25px 0 10px 0;
+                    "
+                  >
+                    Hey, <%= @user.name %>!
+                  </td>
+                </tr>
+
+                <%# <tr>
+                  <td height="10"></td>
+                </tr> %>
+
+                <tr>
+                  <td
+                    align="center"
+                    style="
+                      font-family: 'Trebuchet MS', Arial, sans-serif;
+                      font-size: 14px;
+                      color: #333670;
+                      line-height: 24px;
+                      font-style: italic;
+                    "
+                  >
+                    Here's what you saved this week:
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+
+<%# Articles table body: %>
+        <tr>
+          <td align="center">
+            <table
+              class="middle-column
+              "
+              width="810
+              "
+              border="0"
+              align="center"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                border-left: 2px solid #333670;
+                border-right: 2px solid #333670;
+                border-bottom: 2px solid #333670;
+                border-radius: 0 0 25px 25px;
+              "
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table
+                      class="col3"
+                      width="260"
+                      border="0"
+                      align="left"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+
+                        <tr>
+                          <td align="center">
+                            <table
+                              class="insider"
+                              width="200"
+                              border="0"
+                              align="center"
+                              cellpadding="0"
+                              cellspacing="0"
+                            >
+                              <tbody>
+                                <!-- <tr align="center" style="line-height: 0px">
+                                  <td>
+                                    <img
+                                      style="
+                                        display: block;
+                                        line-height: 0px;
+                                        font-size: 0px;
+                                        border: 0px;
+                                      "
+                                      src="https://webdevtrick.com/wp-content/uploads/email.png"
+                                      width="78"
+                                      height="78"
+                                      alt="icon"
+                                    />
+                                  </td>
+                                </tr> -->
+
+                                <!-- <tr>
+                                  <td height="15"></td>
+                                </tr> -->
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', Arial, sans-serif;
+                                      font-size: 20px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: bold;
+                                    "
+                                  >
+                                    <h3>
+                                      <%=
+                                      @current_newsletter.articles[0].headline
+                                      %>
+                                    </h3>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td height="10"></td>
+                                </tr>
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', sans-serif;
+                                      font-size: 14px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: 300;
+                                    "
+                                  >
+                                    <p>
+                                      <%= @current_newsletter.articles[0].text.slice(0, 200)
+                                      %>
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+
+                    <table
+                      class="col3"
+                      width="260"
+                      border="0"
+                      align="left"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+                        <tr>
+                          <td align="center">
+                            <table
+                              class="insider"
+                              width="200"
+                              border="0"
+                              align="center"
+                              cellpadding="0"
+                              cellspacing="0"
+                            >
+                              <tbody>
+                                <!-- <tr align="center" style="line-height: 0px">
+                                  <td>
+                                    <img
+                                      style="
+                                        display: block;
+                                        line-height: 0px;
+                                        font-size: 0px;
+                                        border: 0px;
+                                      "
+                                      src="https://webdevtrick.com/wp-content/uploads/work.png"
+                                      width="78"
+                                      height="78"
+                                      alt="icon"
+                                    />
+                                  </td>
+                                </tr> -->
+
+                                <!-- <tr>
+                                  <td height="15"></td>
+                                </tr> -->
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', sans-serif;
+                                      font-size: 20px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: bold;
+                                    "
+                                  >
+                                    <h3>
+                                      <%=
+                                      @current_newsletter.articles[1].headline
+                                      %>
+                                    </h3>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td height="10"></td>
+                                </tr>
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', sans-serif;
+                                      font-size: 14px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: 300;
+                                    "
+                                  >
+                                    <p>
+                                      <%= @current_newsletter.articles[1].text.slice(0, 200)
+                                      %>
+                                    </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table
+                      class="col3"
+                      width="260"
+                      border="0"
+                      align="right"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+                        <tr>
+                          <td align="center">
+                            <table
+                              class="insider"
+                              width="200"
+                              border="0"
+                              align="center"
+                              cellpadding="0"
+                              cellspacing="0"
+                            >
+                              <tbody>
+                                <!-- <tr align="center" style="line-height: 0px">
+                                  <td>
+                                    <img
+                                      style="
+                                        display: block;
+                                        line-height: 0px;
+                                        font-size: 0px;
+                                        border: 0px;
+                                      "
+                                      src="https://webdevtrick.com/wp-content/uploads/computer.png"
+                                      width="78"
+                                      height="78"
+                                      alt="icon"
+                                    />
+                                  </td>
+                                </tr> -->
+
+                                <!-- <tr>
+                                  <td height="15"></td>
+                                </tr> -->
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', sans-serif;
+                                      font-size: 20px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: bold;
+                                    "
+                                  >
+                                  <h3> <%= @current_newsletter.articles[2].headline %> </h3>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td height="10"></td>
+                                </tr>
+
+                                <tr align="center">
+                                  <td
+                                    style="
+                                      font-family: 'Trebuchet MS', sans-serif;
+                                      font-size: 14px;
+                                      color: #110f61;
+                                      line-height: 24px;
+                                      font-weight: 300;
+                                    "
+                                  >
+                                  <p> <%= @current_newsletter.articles[2].text.slice(0, 200) %> </p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td height="15"></td>
+        </tr>
+
+        <!-- END ARTICLES -->
 
   </body>
 </html>
+
+
+  
