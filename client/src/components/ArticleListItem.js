@@ -15,7 +15,7 @@ function ArticleListItem({ article }) {
       <p>{textPreview}</p>
 
       <a href={article.url} target="_blank" rel="noreferrer">
-        <MdOpenInNew />
+        <MdOpenInNew className="openIcon" />
       </a>
     </div>
   );

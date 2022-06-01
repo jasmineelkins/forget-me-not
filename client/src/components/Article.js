@@ -14,7 +14,7 @@ function Article({ article }) {
       <h4>{article.headline}</h4>
       <p>{textPreview}</p>
       <a href={article.url} target="_blank" rel="noreferrer">
-        <MdOpenInNew />
+        <MdOpenInNew className="openIcon" />
       </a>
     </div>
   );
