@@ -1,5 +1,9 @@
 Phase 5 Capstone Project: Newsletter Generator
 
+Using the Chrome extension, the user can clicks 'Add to weekly/monthly newsletter' to save an article to their collection. At the end of every week and every month they will receive an email newsletter with all the articles they have saved. If a user prefers to opt out of receiving emails, they can also view their Newsletters on the web app.
+Behind the scenes: when the user clicks 'Add to newsletter', the backend checks if an unsent newsletter for that frequency exists. If it does, the article will be saved to that Newsletter; if not, a new Newsletter is created for the user and the article is saved to that. Once a Newsletter is sent, the status is updated in the database and new articles will not be added to that Newsletter any more.
+From the web app, the user can view all saved articles in their Reading List, which will show the date the article will be sent. The user can edit this reading list and remove articles from their Newsletters.
+
 TODO LIST:
 
 - _DONE_ Build a Chrome extension that console logs URL of current tab
@@ -13,7 +17,7 @@ TODO LIST:
 - _DONE_ Extension has link to open Newsletter web app in new tab
 - _DONE_ Reading List shows article title, URL, Read-by date
 - _DONE_ User can delete Articles from Reading List
-- _DONE_ Extension sets default read-by date to end of current week (Saturday)
+- _DONE_ Extension sets default read-by date to end of current week
 - _DONE_ Logout should Navigate back to Homepage
 - _DONE_ Profile edit PATCH not updating: fix
 - _DONE_ Reading list not working.. fix
@@ -21,38 +25,38 @@ TODO LIST:
 - _DONE_ Scrape data from Medium to show article title and first paragraph..
 - _DONE_ User can choose frequency: weekly or monthly
 - _DONE_ Login should Navigate directly to user Newsletter (once it's configured)? Or to Random full article?
+- _DONE_ add link to open articles from Newsletter
 - User can edit Articles on Reading List - at least the read-by date/Newsletter
 - Reformat birthday display (but can't affect form/backend)
 - User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
-- User can choose how many articles to receive (next: how much content/reading time)
 - Next feature: push to top to make sure will be included in next version, or push to bottom
 - Footer with my info **need to fix styling**
 - also save alt text when grabbing image urls (edit db schema)
 - Add 'link to download extension' on Home page
 - Rewrite fetch calls as async/await
-- New email for Forget Me Not sender
   **_instead of grabbing all text - get individual paragraphs from Medium, other sites if possible_**
-- add link to open articles from Newsletter
-- Email: Iterate through all articles instead of hardcoding
 
 STRETCH GOALS:
 
 - _DONE_ User can log in directly through extension popup
 - _DONE_ User can save title, source, URL of any website
-- New User can sign up directly through extension popup
-- _DONE_ User can select 'receive email newsletter' - backend boolean updates to true
+- _DONE_ User can select 'receive email newsletter' - updates backend boolean
 - _DONE_ User receives currently selected email Newsletter manually (on click)
+- _DONE_ Email Newsletter is formatted like the website
+- _DONE_ Email: Iterate through all articles instead of hardcoding
+- _DONE_ Toast when article is saved to Reading List/Newsletter
 - User receives email Newsletter at set time (Cron job?)
-- Email Newsletter is formatted like a real newspaper
-  - User can mark one article as "priority", which makes it headliner in next Newsletter edition (from specific sites only)
-- Reading List re-renders automatically when backend is updated (Firebase? Sockets?)
+- Add logic to automatically update sent to true after^
+- User can mark one article as "priority", which makes it headliner in next Newsletter edition (from specific sites only)
+- Reading List & Newsletter re-render automatically when backend updated (Firebase? Sockets?)
+- User can choose how many articles to receive (next: how much content/reading time)
 - User can see a randomly chosen Article from the database (home page?)
 - Deploy to heroku
-- _DONE_ Toast when link is added to Newsletter
 - Publish extension to Chrome store
+- Change Profile form to click each individual input to update..
 
-- Get horoscope from API
-- Get local weather from API
+- Get horoscope from API - add to header if user enters birthday
+- Get local weather from API - add to header if user enters location
 
 - Write scrapers for other websites besides Medium:
 - _DONE_ New Yorker
@@ -62,11 +66,8 @@ STRETCH GOALS:
 - Each component in its own folder with separate stylesheets & test files
 - Testing!
 
-- Change Profile form to click each individual input to update..
+FINAL DETAILS:
 
-WEEKEND GOALS:
-
-- _DONE_ Finish formatting newsletter
-- _DONE_ Set up mailer with manual button
-- Deploy!
-- Web sockets to auto reload Reading List (and Newsletter?) when article added (+ Toast!)
+- Add footer to Email
+- Better styling for popup status toast
+- New email account for Forget Me Not sender

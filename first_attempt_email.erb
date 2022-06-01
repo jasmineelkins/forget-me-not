@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+
+  <body>
+    <table
+      width="100%"
+      border="0"
+      align="center"
+      cellpadding="0"
+      cellspacing="0"
+      style="
+        background-color:#c3d3e5;"
+    >
+    
+    <!--HEADER -->
+      <tbody>
+        <tr>
+          <td align="center">
+            <table
+              class="col-header"
+              width="100%"
+              border="0"
+              align="center"
+              cellpadding="0"
+              cellspacing="0"
+            >
+              <tbody>
+                <tr>
+                  <td
+                    align="center"
+                    valign="top"
+                    background="https://res.cloudinary.com/dbl7owtdh/image/upload/v1654027359/Forget%20Me%20Not/email_header_rvt7i6.png"
+                    style="
+                      background-size: cover;
+                      background-position: center;
+                      height: 200;
+                    "
+                  >
+                  <table
+                      class="col-600"
+                      width="600"
+                      height="200"
+                      border="0"
+                      align="center"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+                        <tr>
+                          <td height="40"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+    <!-- END HEADER -->
+
+    <!-- START ARTICLES -->
+        <tr class="article-row">
+          <td align="center">
+            <table
+              class="outer-table
+              "
+              width="810
+              "
+              border="0"
+              align="center"
+              cellpadding="0"
+              cellspacing="0"
+              style="
+                border-left: 2px solid #333670;
+                border-right: 2px solid #333670;
+                border-bottom: 2px solid #333670;
+                border-radius: 0 0 25px 25px;
+              "
+            >
+              <tbody>
+                <tr>
+                <% @current_newsletter.articles.each do |article|%>
+                <% if article.headline && article.text %>
+                  <td>
+                    <table
+                      class="inner-column"
+                      width="260"
+                      border="0"
+                      align="left"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+
+                            <tr align="center">
+                              <td
+                                style="
+                                  font-family: 'Trebuchet MS', Arial, sans-serif;
+                                  font-size: 20px;
+                                  color: #110f61;
+                                  line-height: 24px;
+                                  font-weight: bold;
+                                "
+                              >
+                                <h3>
+                                  <%=
+                                  article.headline
+                                  %>
+                                </h3>
+                              </td>
+                            </tr>
+                            <tr align="center">
+                              <td
+                                style="
+                                  font-family: 'Trebuchet MS', sans-serif;
+                                  font-size: 14px;
+                                  color: #110f61;
+                                  line-height: 24px;
+                                  font-weight: 300;
+                                "
+                              >
+                                <p>
+                                  <%= article.text.slice(0, 200)%>
+                                </p>
+                              </td>
+                            </tr>                            
+                          <% else %>
+                            <tr>
+                            <td><%= article.url %></td>
+                            </tr>
+                          <% end %>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <!-- END ARTICLES -->
+
+  </body>
+</html>
