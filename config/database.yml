@@ -6,10 +6,10 @@
 #
 
 development:
-  adapter: sqlite3
+  adapter: postgres
   pool: 5
   timeout: 5000
-  database: db/development.sqlite3
+  url: postgres://pmxrjvwknbvvhe:bafa5fa32cd3a838b11234164adba591172ebfb6f99de05dfb029fe2f4a6e9d3@ec2-34-230-153-41.compute-1.amazonaws.com:5432/d45mip8bka5k0k
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
