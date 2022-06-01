@@ -3,6 +3,8 @@ import Article from "./Article";
 import PriorityArticle from "./PriorityArticle";
 import ArticleListItem from "./ArticleListItem";
 
+import BASE_URL from "../Config";
+
 function Newsletter({ user }) {
   const [articleList, setArticleList] = useState([]);
   const [priorityArticle, setPriorityArticle] = useState({});
@@ -13,7 +15,7 @@ function Newsletter({ user }) {
   const { id } = user;
 
   // useEffect(() => {
-  //   fetch(`/users/${id}/articles`)
+  //   fetch(`${BASE_URL}/users/${id}/articles`)
   //     .then((res) => res.json())
   //     .then((listOfSavedArticles) => {
   //       console.log("Saved article list: ", listOfSavedArticles);
@@ -28,7 +30,7 @@ function Newsletter({ user }) {
 
   async function getUserArticles(frequency) {
     try {
-      const response = await fetch(`/users/${id}/newsletters`);
+      const response = await fetch(`${BASE_URL}/users/${id}/newsletters`);
       const newslettersArray = await response.json();
 
       // return newsletter of given frequency
@@ -80,7 +82,7 @@ function Newsletter({ user }) {
   }
 
   function handleManualSend() {
-    fetch(`/send_current_newsletter/${selectedFrequency}`)
+    fetch(`${BASE_URL}/send_current_newsletter/${selectedFrequency}`)
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.log(error.message));

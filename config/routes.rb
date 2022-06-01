@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   get '/send_current_newsletter/:frequency',
       to: 'newsletters#send_current_newsletter'
 
+  # serve the client’s index.html for any path that is not included in your client’s routes:
+  get '*path',
+      to: 'application#fallback_index_html',
+      constraints: ->(request) { !request.xhr? && request.format.html? }
+
   # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
   # match "/alert" => "alerts#create"
   # match "/alerts" => "alerts#get"

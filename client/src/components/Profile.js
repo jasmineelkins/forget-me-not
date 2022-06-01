@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BsCheck2Square, BsSquare } from "react-icons/bs";
 
+import BASE_URL from "../Config";
+
 function Profile({ user, setUser }) {
   const defaultProfileForm = {
     name: user.name,
@@ -21,7 +23,7 @@ function Profile({ user, setUser }) {
   const [isChecked, setIsChecked] = useState(user.receive_newsletter);
 
   useEffect(() => {
-    fetch(`/users/${user.id}`)
+    fetch(`${BASE_URL}/users/${user.id}`)
       .then((res) => res.json())
       .then((currentUserObj) => {
         // console.log("current user: ", currentUserObj);
@@ -61,7 +63,7 @@ function Profile({ user, setUser }) {
     console.log(profileFormData);
 
     // UPDATE user info
-    fetch(`/users/${user.id}`, {
+    fetch(`${BASE_URL}/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +110,7 @@ function Profile({ user, setUser }) {
     setIsChecked(!isChecked);
 
     // PATCH checkbox input data
-    fetch(`/users/${user.id}`, {
+    fetch(`${BASE_URL}/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

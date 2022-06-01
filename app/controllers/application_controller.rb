@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
+  # serve client’s index.html for any path that is not included in your client’s routes:
+  def fallback_index_html
+    render file: 'public/index.html'
+  end
+
   #   protect_from_forgery
   #   before_filter :current_user, :cors_preflight_check
   #   after_filter :cors_set_access_control_headers

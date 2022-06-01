@@ -13,12 +13,14 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import RandomArticle from "./components/RandomArticle";
 
+import BASE_URL from "./Config";
+
 function App() {
   const [user, setUser] = useState(null);
 
   // auto log-in
   useEffect(() => {
-    fetch(`/me`)
+    fetch(`${BASE_URL}/me`)
       .then((res) => res.json())
       .then((userObj) => {
         console.log("Current user: ", userObj);

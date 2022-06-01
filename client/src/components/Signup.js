@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
+import BASE_URL from "../Config";
+
 const defaultFormState = {
   name: "",
   username: "",
@@ -32,7 +34,7 @@ function Signup({ user, setUser }) {
     e.preventDefault();
 
     // POST request: create a new user
-    fetch(`/signup`, {
+    fetch(`${BASE_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReadingListLink from "./ReadingListLink";
 
+import BASE_URL from "../Config";
+
 function ReadingList({ user }) {
   const [articleList, setArticleList] = useState([]);
 
   const { id } = user;
 
   useEffect(() => {
-    fetch(`/users/${id}/articles`)
+    fetch(`${BASE_URL}/users/${id}/articles`)
       .then((res) => res.json())
       .then((listOfSavedArticles) => {
         console.log("Saved article list: ", listOfSavedArticles);

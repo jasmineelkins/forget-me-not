@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
+import BASE_URL from "../Config";
+
 const defaultFormState = { username: "", password: "" };
 
 function Login({ user, setUser }) {
@@ -30,7 +32,7 @@ function Login({ user, setUser }) {
     e.preventDefault();
 
     // POST request: log in user by creating a session
-    fetch(`/login`, {
+    fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
