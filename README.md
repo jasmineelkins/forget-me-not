@@ -26,12 +26,12 @@ TODO LIST:
 - _DONE_ User can choose frequency: weekly or monthly
 - _DONE_ Login should Navigate directly to user Newsletter (once it's configured)? Or to Random full article?
 - _DONE_ add link to open articles from Newsletter
+- _DONE_ Footer with my info
 - User can edit Articles on Reading List - at least the read-by date/Newsletter
 - Reformat birthday display (but can't affect form/backend)
 - User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
 - Next feature: push to top to make sure will be included in next version, or push to bottom
-- Footer with my info **need to fix styling**
-- also save alt text when grabbing image urls (edit db schema)
+- Also save alt text when grabbing image urls (edit db schema)
 - Add 'link to download extension' on Home page
 - Rewrite fetch calls as async/await
   **_instead of grabbing all text - get individual paragraphs from Medium, other sites if possible_**

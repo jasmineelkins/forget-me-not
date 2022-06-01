@@ -22,6 +22,7 @@ function Navbar({ user, setUser }) {
       </div>
 
       <div className="navBarLinks">
+        <Link to="/about">About</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/reading-list">Reading List</Link>
         <Link to="/">Newsletter</Link>

@@ -54,6 +54,10 @@ function App() {
                   element={<Login user={user} setUser={setUser} />}
                 ></Route>
                 <Route
+                  path="/about"
+                  element={<HomePage user={user} setUser={setUser} />}
+                ></Route>
+                <Route
                   path="/profile"
                   element={<Profile user={user} setUser={setUser} />}
                 ></Route>
@@ -81,10 +85,9 @@ function App() {
               </>
             )}
           </Routes>
-
-          {/* <Footer /> */}
         </BrowserRouter>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -64,7 +64,7 @@ button:active {
 
 .pageContainer {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   /* width: 100vw; */
 }
 
@@ -112,13 +112,47 @@ button:active {
   border-radius: 25px;
   width: 70vw;
   text-align: center;
-  padding: 2em;
-  color: var(--medium-text);
+  padding: 3em;
+  color: var(--light-background);
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.homeContainer .headerDiv {
+  width: 60%;
+  border-bottom: 1px solid var(--light-background);
 }
 
 .homeContainer h2 {
   margin: 1em;
   font-family: var(--fancy-font);
+}
+
+.homeContainer p {
+  font-size: 18px;
+}
+
+.homeContainer span {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.homeContainer span a {
+  color: var(--dark-text);
+}
+
+.innerText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 90%;
+  padding: 10px;
 }
 
 /* NAVBAR --------------------------------------------------------- */
@@ -180,6 +214,7 @@ button:active {
   text-decoration: none;
   text-decoration: none;
   color: var(--dark-text);
+  font-size: 18px;
 }
 
 .authBarContainer a:hover {
@@ -189,7 +224,7 @@ button:active {
 }
 
 .authBarContainer a:visited {
-  color: #333;
+  color: var(--dark-text);
 }
 
 /* SIGNUP,LOGIN --------------------------------------------------------- */
@@ -552,7 +587,7 @@ input[type="checkbox"]:focus {
 .articleContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: white;
   border-radius: 25px;
@@ -596,7 +631,7 @@ input[type="checkbox"]:focus {
 .articleListItemContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 5px;
   position: relative;
@@ -616,11 +651,12 @@ input[type="checkbox"]:focus {
 }
 /* FOOTER ---------------------------------------------------------------- */
 footer {
-  /* background-image: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1652912211/Forget%20Me%20Not/favpng_euclidean-vector-painting-flower-blue_x6smfw.png");
+  /* background-image: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1654094112/Forget%20Me%20Not/Screen_Shot_2022-06-01_at_10.34.55_AM_xhdui4.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover; */
-  background: black;
+  background: #686ba67b;
+  font-family: var(--main-font);
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -630,18 +666,20 @@ footer {
   justify-content: center;
   gap: 10px;
   font-size: 14px;
-  color: white;
+  color: var(--dark-text);
   letter-spacing: 0.2px;
+  margin-top: 10em;
 }
-/* 
+
 footer span {
+  /* background: #bcbbe44a; */
   padding: 0.5em;
   width: 100%;
   text-align: center;
-} */
+}
 
 footer a {
-  color: white;
+  color: var(--dark-text);
   margin: 0.3em;
 }
 
