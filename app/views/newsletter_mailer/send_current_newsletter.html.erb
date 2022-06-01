@@ -126,6 +126,9 @@
                     width="90%"><%= @current_newsletter.frequency.capitalize %></span>
                   </td>
                 </tr>
+                                <tr>
+                  <td height="40"></td>
+                </tr>
               </tbody>
             </table>
           </td>
@@ -152,41 +155,74 @@
               "
             >
               <tbody>
-                <tr>
 
-                  <% @current_newsletter.articles.each do |article|%>
-                    <% if article.headline && article.text %>
-                      <td>
-                        <div class="card is-centered">
-                          <h3 style="
-                            font-family: 'Trebuchet MS', Arial, sans-serif;
-                            font-size: 20px;
-                            color: #110f61;
-                            line-height: 24px;
-                            font-weight: bold;
-                          ">
-                            <%=article.headline%>
-                          </h3>
-                          <p><%= article.text.slice(0, 200)%></p>
-                          <a class="btn btn-primary" href="<%= article.url%>" target="_blank">Continue reading</a>
-                        </div>  
-                      </td>
-                                          
-                    <% else %>
-                      <td>
-                        <div class="card is-centered">
-                          <h3 style="
-                            font-family: 'Trebuchet MS', Arial, sans-serif;
-                            font-size: 20px;
-                            color: #110f61;
-                            line-height: 24px;
-                            font-weight: bold;
-                          ">
-                            <%= article.headline %>
-                          </h3>
-                          <a class="btn btn-primary" href="<%= article.url%>" target="_blank">Continue reading</a>
-                        </div>
-                      </td>
+                <% @current_newsletter.articles.each_slice(3) do |three_articles|%>
+                  <tr>
+                    <% three_articles.each do |article|%>
+                      <% if article.headline && article.text %>
+                        <td align="center">
+                          <table
+                        class="inner-column"
+                        width="250"
+                        border="0"
+                        align="center"
+                        cellpadding="0"
+                        cellspacing="0"
+                          >
+                            <tbody>
+
+                            <tr align="center">
+                            <td>
+                              <div class="card is-centered" width="150" style="background-color: #ffffff; padding: 5px 10px; border-radius: 15px;">
+                            <h3 style="
+                              font-family: 'Trebuchet MS', Arial, sans-serif;
+                              font-size: 20px;
+                              color: #110f61;
+                              line-height: 24px;
+                              font-weight: bold;
+                            ">
+                              <%=article.headline%>
+                            </h3>
+                            <p><%= article.text.slice(0, 150)%>...</p>
+                            <a class="btn btn-primary" href="<%= article.url%>" target="_blank">Continue reading</a>
+                          </div> 
+                          </td> 
+                          </tbody>
+                          </table>
+                        </td>
+                                            
+                      <% else %>
+                        <td align="center">
+                          <table
+                        class="inner-column"
+                        width="250"
+                        border="0"
+                        align="center"
+                        cellpadding="0"
+                        cellspacing="0"
+                          >
+                            <tbody>
+
+                            <tr align="center">
+                            <td>
+                              <div class="card is-centered" width="150" style="background-color: #ffffff; padding: 5px 10px; border-radius: 15px;">
+                            <h3 style="
+                              font-family: 'Trebuchet MS', Arial, sans-serif;
+                              font-size: 20px;
+                              color: #110f61;
+                              line-height: 24px;
+                              font-weight: bold;
+                            ">
+                              <%= article.headline %>
+                            </h3>
+                            <p>No text preview available.</p>
+                            <a class="btn btn-primary" href="<%= article.url%>" target="_blank">Continue reading</a>
+                          </div>
+                          </td> 
+                          </tbody>
+                          </table>
+                        </td>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </tr>
