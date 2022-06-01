@@ -115,7 +115,12 @@ function Newsletter({ user }) {
         </div>
 
         <div className="newsletterLeft item2">
-          <PriorityArticle key={priorityArticle.id} article={priorityArticle} />
+          {priorityArticle ? (
+            <PriorityArticle
+              key={priorityArticle.id}
+              article={priorityArticle}
+            />
+          ) : null}
         </div>
         <div className="newsletterCenter item3">{middleArticlesToDisplay}</div>
         <div className="newsletterRight item4">{rightArticlesToDisplay}</div>
