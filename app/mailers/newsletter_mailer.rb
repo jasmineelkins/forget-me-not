@@ -6,8 +6,15 @@ class NewsletterMailer < ApplicationMailer
     @user = user
     @current_newsletter = current_newsletter
 
-    # @current_newsletter = current_newsletter
+    if current_newsletter.frequency == 'weekly'
+      @frequency = 'week'
+    else
+      @frequency = 'month'
+    end
 
-    mail(to: @user.email, subject: 'Newsletter Test')
+    mail(
+      to: @user.email,
+      subject: "Your #{current_newsletter.frequency.capitalize} Newsletter",
+    )
   end
 end
