@@ -256,9 +256,10 @@ function Profile({ user, setUser }) {
             ></input>
           </div> */}
 
-          <div className="formRow">
+          <div className="formRow checkboxRow">
             <label>Email Newsletter?</label>
             <input
+              id="checkbox"
               name="receive_newsletter"
               type="checkbox"
               checked={

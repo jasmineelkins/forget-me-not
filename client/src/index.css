@@ -395,18 +395,25 @@ th:hover::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: var(--medium-background);
+  padding: 5px 30px;
+  margin: 2em;
+  border-radius: 25px;
+  color: var(--light-background);
+  font-size: 18px;
 }
 
-.profileContainer h2 {
+/* .profileContainer h2 {
   margin: 1rem;
-}
+} */
 
 .profileForm {
   display: flex;
   flex-direction: column;
   align-items: space-between;
   justify-content: center;
-  gap: 20px;
+  /* gap: 5px; */
+  padding: 0px 30px;
 }
 
 .profileRow {
@@ -433,7 +440,14 @@ th:hover::after {
 .profileInnerDiv button,
 .profileForm button {
   align-self: center;
-  margin: 6em;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.profileForm input {
+  padding: 10px;
+  font-family: var(--main-font);
+  font-size: 14px;
 }
 
 .profileLabel {
@@ -445,8 +459,17 @@ th:hover::after {
 }
 
 .formRow textarea {
-  font-family: "Jost", Verdana, sans-serif;
+  font-family: var(--main-font);
   padding: 0.5em;
+}
+
+.checkboxRow {
+  display: inline;
+}
+
+#checkbox {
+  margin-left: 90px;
+  transform: scale(1.2);
 }
 
 .avatar {
@@ -456,13 +479,15 @@ th:hover::after {
     inset 0 0 0 6px var(--medium-text);
   border-radius: 100%;
   padding: 1.2em;
-  margin: 2em;
+  margin: 1em;
+  background-color: var(--light-background);
 }
 
 .dateJoined {
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   font-style: italic;
-  font-size: smaller;
+  /* font-size: smaller; */
+  color: var(--light-background);
 }
 
 .inputContainer {
@@ -473,33 +498,33 @@ th:hover::after {
 }
 
 /* Customize checkboxes */
-/* input[type="checkbox"] {
+input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none; */
+  appearance: none;
 
-/* create custom checkbox appearance */
-/* display: inline-block;
+  /* create custom checkbox appearance */
+  display: inline-block;
   width: 25px;
   height: 25px;
-  padding: 6px; */
+  padding: 6px;
 
-/* background-color only for content */
-/* background-clip: content-box;
-  border: 1.5px solid rgb(250, 234, 228);
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 1.5px solid var(--light-background);
   border-radius: 6px;
-  background-color: rgb(250, 234, 228);
+  background-color: var(--light-background);
   margin-left: 15px;
   margin-right: 15px;
 }
 
 input[type="checkbox"]:checked {
-  background-color: rgb(145, 39, 94);
+  background-color: var(--dark-text);
 }
 
 input[type="checkbox"]:focus {
   outline: none !important;
-} */
+}
 
 /* RANDOM ARTICLE --------------------------------------------------------- */
 .randomContainer,
