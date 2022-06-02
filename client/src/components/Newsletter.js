@@ -7,8 +7,8 @@ function Newsletter({ user }) {
   const [articleList, setArticleList] = useState([]);
   const [priorityArticle, setPriorityArticle] = useState({});
 
-  // const [newsletterArticles, setNewsletterArticles] = useState([]);
   const [selectedFrequency, setSelectedFrequency] = useState("weekly");
+  const [currentNewsletter, setCurrentNewsletter] = useState({});
 
   const { id } = user;
 
@@ -32,16 +32,19 @@ function Newsletter({ user }) {
       const newslettersArray = await response.json();
 
       // return newsletter of given frequency
-      const selectedNewsletter = newslettersArray.filter(
+      const selectedNewsletters = newslettersArray.filter(
         (nl) => nl.frequency === frequency
-      )[0];
-      console.log(selectedNewsletter.articles);
+      );
+
+      const [mostRecent] = selectedNewsletters.slice(-1);
+      setCurrentNewsletter(mostRecent);
+      console.log(mostRecent.articles);
 
       // set articleList to articles of that newsletter
-      setArticleList(selectedNewsletter.articles);
+      setArticleList(mostRecent.articles);
 
       // set Priority article to first in list
-      setPriorityArticle(selectedNewsletter.articles[0]);
+      setPriorityArticle(mostRecent.articles[0]);
     } catch (error) {
       console.log(error.message);
     }
@@ -108,7 +111,12 @@ function Newsletter({ user }) {
       <div className="newsletter">
         <div className="newsletterHeader item1">
           <div className="newsletterHoroscope"></div>
-          <h3>{capitalizeFirstLetter(selectedFrequency)}</h3>
+
+          <div className="newsletterTitleDiv">
+            <h3>{capitalizeFirstLetter(selectedFrequency)}</h3>
+            <h4>{currentNewsletter.publish_date}</h4>
+          </div>
+
           <div className="newsletterWeather"></div>
         </div>
 

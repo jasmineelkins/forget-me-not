@@ -46,7 +46,7 @@ function Login({ user, setUser }) {
         console.log("Logged in user: ", userObj);
 
         if (userObj.username) {
-          navigate("/");
+          navigate("/about");
           setUser(userObj);
           setError(null);
         } else {

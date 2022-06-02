@@ -33,7 +33,7 @@ function ReadingList({ user }) {
             <tr>
               <th>Headline</th>
               <th>URL</th>
-              <th>Newlsetter Date</th>
+              <th>Newsletter Date</th>
               <th>Date Added</th>
               <th>Delete?</th>
             </tr>

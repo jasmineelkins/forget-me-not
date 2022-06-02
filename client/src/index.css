@@ -108,9 +108,9 @@ button:active {
 
 /* HOME --------------------------------------------------------- */
 .homeContainer {
-  background-color: var(--dark-background);
+  background-color: var(--medium-background);
   border-radius: 25px;
-  width: 70vw;
+  width: 60vw;
   text-align: center;
   padding: 3em;
   color: var(--light-background);
@@ -523,6 +523,13 @@ input[type="checkbox"]:focus {
 
 .newsletterTop {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletterTitleDiv {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
