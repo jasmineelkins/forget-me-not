@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
+import Newsletter from "./Newsletter";
 
-function PriorityArticle({ article }) {
-  let textPreview;
+function PriorityArticle({ article, currentNewsletter }) {
+  const textPreview = article.text ? `${article.text.slice(0, 600)}...` : null;
 
-  if (article.text) {
-    textPreview = `${article.text.slice(0, 600)}...`;
-  } else {
-    textPreview = null;
-  }
+  const staticImageSource =
+    currentNewsletter.frequency === "weekly"
+      ? "https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
+      : "https://miro.medium.com/max/1400/0*eX34raKh7IzpEaVB";
   return (
     <div className="priorityArticleContainer">
       <h4>{article.headline}</h4>
       <img
-        src="https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
+        src={staticImageSource}
         alt="placeholder"
         className="priorityImage"
       />

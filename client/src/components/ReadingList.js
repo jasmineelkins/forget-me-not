@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReadingListLink from "./ReadingListLink";
+import AddNewArticleForm from "./AddNewArticleForm";
+
+import BASE_URL from "../Config";
 
 function ReadingList({ user }) {
   const [articleList, setArticleList] = useState([]);
@@ -7,7 +10,7 @@ function ReadingList({ user }) {
   const { id } = user;
 
   useEffect(() => {
-    fetch(`/users/${id}/articles`)
+    fetch(`${BASE_URL}/users/${id}/articles`)
       .then((res) => res.json())
       .then((listOfSavedArticles) => {
         console.log("Saved article list: ", listOfSavedArticles);
@@ -27,6 +30,8 @@ function ReadingList({ user }) {
 
   return (
     <div className="readingListContainer">
+      <AddNewArticleForm user={user} />
+
       <div className="tableContainer">
         <table className="readingListTable">
           <thead>

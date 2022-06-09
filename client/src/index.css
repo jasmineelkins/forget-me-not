@@ -442,6 +442,7 @@ th:hover::after {
   align-self: center;
   margin-top: 3em;
   margin-bottom: 2em;
+  font-size: 14px;
 }
 
 .profileForm input {
@@ -681,6 +682,15 @@ input[type="checkbox"]:focus {
 .newsletterLeft .openIcon {
   margin-right: 0;
 }
+
+/* FOOTER ---------------------------------------------------------------- */
+.newArticleFormContainer {
+  border: 1px solid var(--dark-text);
+  border-radius: 25px;
+  padding: 1em;
+  margin-top: 1em;
+}
+
 /* FOOTER ---------------------------------------------------------------- */
 footer {
   /* background-image: url("https://res.cloudinary.com/dbl7owtdh/image/upload/v1654094112/Forget%20Me%20Not/Screen_Shot_2022-06-01_at_10.34.55_AM_xhdui4.png");

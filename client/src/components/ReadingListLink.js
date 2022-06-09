@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import BASE_URL from "../Config";
+
 function ReadingListLink({ article, articleList, setArticleList }) {
   // const [readByDate, setReadByDate] = useState();
 
@@ -7,7 +9,7 @@ function ReadingListLink({ article, articleList, setArticleList }) {
     const { id } = article;
 
     // DELETE article
-    fetch(`/articles/${id}`, {
+    fetch(`${BASE_URL}/articles/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

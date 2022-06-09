@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import BASE_URL from "../Config";
+
 function Navbar({ user, setUser }) {
   const navigate = useNavigate();
 
   function handleLogoutClick() {
     //   log out user by deleting session
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch(`${BASE_URL}/logout`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
         console.log(r);
