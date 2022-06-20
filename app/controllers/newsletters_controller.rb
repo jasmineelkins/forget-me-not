@@ -3,8 +3,12 @@ class NewslettersController < ApplicationController
 
   # GET /newsletters
   def index
-    newsletters = Newsletter.all
-    render json: newsletters, include: :articles
+    if params[:user_id] = session[:user_id]
+      newsletters = Newsletter.where(user_id: params[:user_id])
+      render json: newsletters, include: :articles
+    else
+      render json: { message: 'Not authorized' }
+    end
   end
 
   # GET /newsletters/:id

@@ -5,10 +5,21 @@ import Newsletter from "./Newsletter";
 function PriorityArticle({ article, currentNewsletter }) {
   const textPreview = article.text ? `${article.text.slice(0, 600)}...` : null;
 
-  const staticImageSource =
-    currentNewsletter.frequency === "weekly"
-      ? "https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
-      : "https://miro.medium.com/max/1400/0*eX34raKh7IzpEaVB";
+  let staticImageSource;
+
+  if (currentNewsletter) {
+    staticImageSource =
+      currentNewsletter.frequency === "weekly"
+        ? "https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
+        : "https://miro.medium.com/max/1400/0*eX34raKh7IzpEaVB";
+  } else {
+    staticImageSource = null;
+  }
+
+  // const staticImageSource =
+  //   currentNewsletter.frequency === "weekly"
+  //     ? "https://miro.medium.com/max/1400/0*l75ZKzIfE_jhTRpN.jpg"
+  //     : "https://miro.medium.com/max/1400/0*eX34raKh7IzpEaVB";
   return (
     <div className="priorityArticleContainer">
       <h4>{article.headline}</h4>

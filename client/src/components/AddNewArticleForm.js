@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-
 import BASE_URL from "../Config";
 
-function AddNewArticleForm({ user }) {
+function AddNewArticleForm({ user, articleList, setArticleList }) {
   // const [loggedInUser, setLoggedInUser] = useState(null);
   const [articleURL, setArticleURL] = useState("");
   const [progressMessage, setProgressMessage] = useState();
@@ -98,6 +97,8 @@ function AddNewArticleForm({ user }) {
       });
       const articleObj = await response.json();
       console.log(articleObj);
+
+      setArticleList([...articleList, articleObj]);
 
       setProgressMessage("Article saved");
 

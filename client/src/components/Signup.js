@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-
+import { useNavigate } from "react-router-dom";
 import BASE_URL from "../Config";
 
-const defaultFormState = {
-  name: "",
-  username: "",
-  password: "",
-  password_confirmation: "",
-};
-
 function Signup({ user, setUser }) {
+  const defaultFormState = {
+    name: "",
+    username: "",
+    password: "",
+    password_confirmation: "",
+  };
+
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
   const [errors, setErrors] = useState(null);
+  const navigate = useNavigate();
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
+
+  const errorsToDisplay = errors === null ? null : errors[0];
 
   function togglePassword(e) {
     e.preventDefault();
@@ -32,45 +35,50 @@ function Signup({ user, setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    // console.log(formData);
 
-    // POST request: create a new user
-    fetch(`${BASE_URL}/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: formData.name,
-        username: formData.username,
-        password: formData.password,
-        password_confirmation: formData.password_confirmation,
-      }),
-    })
-      .then((res) => res.json())
-      .then((userObj) => {
-        console.log("User signup data: ", userObj);
+    createNewUser();
 
-        if (userObj.username) {
-          setUser(userObj);
-          setErrors(null);
-        } else {
-          if (userObj.errors) {
-            setErrors(userObj.errors);
-          } else {
-            setErrors(null);
-          }
-
-          setUser(null);
-        }
-      })
-      .catch((error) => console.log(error.message));
-
-    // reset form
     setFormData(defaultFormState);
   }
 
-  const errorsToDisplay = errors === null ? null : errors[0];
+  // POST request: create a new user
+  async function createNewUser() {
+    try {
+      const response = await fetch(`${BASE_URL}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          username: formData.username,
+          password: formData.password,
+          password_confirmation: formData.password_confirmation,
+        }),
+      });
+
+      const userObj = await response.json();
+      console.log(userObj);
+
+      if (userObj.username) {
+        navigate("/");
+        setUser(userObj);
+        setErrors(null);
+      } else {
+        if (userObj.errors) {
+          setErrors(userObj.errors);
+        } else {
+          setErrors(null);
+        }
+
+        setUser(null);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <div className="authFormContainer">

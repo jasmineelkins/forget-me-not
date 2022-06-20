@@ -290,6 +290,11 @@ button:active {
   justify-content: center;
 }
 
+.noArticlesYetSpan {
+  margin: 3em;
+  font-style: italic;
+}
+
 .tableContainer {
   margin: 3em;
   /* display: block;
@@ -525,6 +530,10 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]:focus {
   outline: none !important;
+}
+
+#userEmail {
+  font-size: 14px;
 }
 
 /* RANDOM ARTICLE --------------------------------------------------------- */

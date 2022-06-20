@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import BASE_URL from "../Config";
 
 function Navbar({ user, setUser }) {
   const navigate = useNavigate();
 
-  function handleLogoutClick() {
-    //   log out user by deleting session
-    fetch(`${BASE_URL}/logout`, { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-        console.log(r);
-      }
-      navigate("/");
-    });
+  // log out user by deleting session
+  async function deleteSession() {
+    const response = await fetch(`${BASE_URL}/logout`, { method: "DELETE" });
+    if (response.ok) {
+      setUser(null);
+      console.log(response);
+    }
+    navigate("/");
   }
   return (
     <div className="navBarContainer">
@@ -30,7 +28,7 @@ function Navbar({ user, setUser }) {
         <Link to="/">Newsletter</Link>
         {/* <Link to="/random">Random</Link> */}
 
-        <button onClick={handleLogoutClick} className="btn logoutBtn">
+        <button onClick={deleteSession} className="btn logoutBtn">
           Logout
         </button>
       </div>

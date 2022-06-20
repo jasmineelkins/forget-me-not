@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import AuthBar from "./components/AuthBar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -12,7 +11,6 @@ import HomePage from "./components/HomePage";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import RandomArticle from "./components/RandomArticle";
-
 import BASE_URL from "./Config";
 
 function App() {
@@ -20,16 +18,22 @@ function App() {
 
   // auto log-in
   useEffect(() => {
-    fetch(`${BASE_URL}/me`)
-      .then((res) => res.json())
-      .then((userObj) => {
-        console.log("Current user: ", userObj);
-        if (userObj.username) {
-          setUser(userObj);
-        }
-      })
-      .catch((error) => console.log(error.message));
+    getCurrentUser();
   }, []);
+
+  async function getCurrentUser() {
+    try {
+      const response = await fetch(`${BASE_URL}/me`);
+      const currentUserObj = await response.json();
+
+      console.log("Current user: ", currentUserObj);
+      if (currentUserObj.username) {
+        setUser(currentUserObj);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <div className="pageContainer">

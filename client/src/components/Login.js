@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-
 import BASE_URL from "../Config";
 
-const defaultFormState = { username: "", password: "" };
-
 function Login({ user, setUser }) {
+  const defaultFormState = { username: "", password: "" };
+
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
+
+  const errorsToDisplay = error === null ? null : error;
 
   function togglePassword(e) {
     e.preventDefault();
@@ -31,43 +31,45 @@ function Login({ user, setUser }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // POST request: log in user by creating a session
-    fetch(`${BASE_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        username: formData.username,
-        password: formData.password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((userObj) => {
-        console.log("Logged in user: ", userObj);
+    createUserSession();
 
-        if (userObj.username) {
-          navigate("/about");
-          setUser(userObj);
-          setError(null);
-        } else {
-          if (userObj.error) {
-            setError(userObj.error.login);
-          } else {
-            setError(null);
-          }
-
-          setUser(null);
-        }
-      })
-      .catch((error) => console.log(error.message));
-
-    // reset form
     setFormData(defaultFormState);
   }
 
-  const errorsToDisplay = error === null ? null : error;
+  // POST request: log in user by creating a session
+  async function createUserSession() {
+    try {
+      const response = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      const userObj = await response.json();
+
+      if (userObj.username) {
+        navigate("/");
+        setUser(userObj);
+        setError(null);
+      } else {
+        if (userObj.error) {
+          setError(userObj.error.login);
+        } else {
+          setError(null);
+        }
+
+        setUser(null);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <div className="authFormContainer">
