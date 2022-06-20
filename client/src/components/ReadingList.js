@@ -13,6 +13,7 @@ function ReadingList({ user }) {
     fetch(`${BASE_URL}/users/${id}/articles`)
       .then((res) => res.json())
       .then((listOfSavedArticles) => {
+        console.log("User id: ", id);
         console.log("Saved article list: ", listOfSavedArticles);
         setArticleList(listOfSavedArticles);
       })

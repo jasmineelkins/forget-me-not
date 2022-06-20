@@ -3,9 +3,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    articles = Article.all
+    puts params[:user_id]
+    puts session[:user_id]
 
-    render json: articles
+    puts params[:user_id] = session[:user_id]
+
+    # CLEAN UP & ADD CORRECT ERROR RESPONSE
+    if params[:user_id] == session[:user_id]
+      articles = Article.where(user_id: params[:user_id])
+      render json: articles
+    else
+      render json: { message: 'Not authorized' }
+    end
 
     # render json: { message: 'Hello this is the server' }
   end
