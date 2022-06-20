@@ -28,7 +28,7 @@ function HomePage(props) {
       <span>
         Click{" "}
         <a
-          href="https://chrome.google.com/webstore/category/extensions"
+          href="https://github.com/jasmineelkins/forget-me-not-extension"
           target="_blank"
           rel="noreferrer"
         >

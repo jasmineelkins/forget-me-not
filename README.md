@@ -1,6 +1,6 @@
 Phase 5 Capstone Project: Newsletter Generator
 
-Using the Chrome extension, the user can clicks 'Add to weekly/monthly newsletter' to save an article to their collection. At the end of every week and every month they will receive an email newsletter with all the articles they have saved. If a user prefers to opt out of receiving emails, they can also view their Newsletters on the web app.
+Using the Chrome extension, the user can click 'Add to weekly/monthly newsletter' to save an article to their collection. At the end of every week and every month they will receive an email newsletter with all the articles they have saved. If a user prefers to opt out of receiving emails, they can also view their Newsletters on the web app.
 Behind the scenes: when the user clicks 'Add to newsletter', the backend checks if an unsent newsletter for that frequency exists. If it does, the article will be saved to that Newsletter; if not, a new Newsletter is created for the user and the article is saved to that. Once a Newsletter is sent, the status is updated in the database and new articles will not be added to that Newsletter any more.
 From the web app, the user can view all saved articles in their Reading List, which will show the date the article will be sent. The user can edit this reading list and remove articles from their Newsletters.
 
@@ -11,7 +11,7 @@ TODO LIST:
 - _DONE_ Build backend & front end with User Auth: Signup & Login
 - _DONE_ Extension can get current user from local storage session
 - _DONE_ New User automatically creates default Newsletter to that user_id
-- _DONE_ Extension can create a new Article for currently logged in user, saving to default Newsletter ("Reading List")
+- _DONE_ Extension can create a new Article for currently logged in user, saving to default Newsletter
 - _DONE_ User can view all saved Articles as "Reading List"
 - _DONE_ Extension shows username OR link to site to log-in
 - _DONE_ Extension has link to open Newsletter web app in new tab
@@ -24,17 +24,28 @@ TODO LIST:
 - _DONE_ Reading List renders as table
 - _DONE_ Scrape data from Medium to show article title and first paragraph..
 - _DONE_ User can choose frequency: weekly or monthly
-- _DONE_ Login should Navigate directly to user Newsletter (once it's configured)? Or to Random full article?
+- _DONE_ Login should Navigate directly to user Newsletter **Or to Random full article?**
 - _DONE_ add link to open articles from Newsletter
 - _DONE_ Footer with my info
+- _DONE_ Rewrite fetch calls as async/await
+- _DONE_ Add 'link to download extension' on Home page
 - User can edit Articles on Reading List - at least the read-by date/Newsletter
+- User can view full individual Article through web app (Randomly generated?)
 - Reformat birthday display (but can't affect form/backend)
 - User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
 - Next feature: push to top to make sure will be included in next version, or push to bottom
 - Also save alt text when grabbing image urls (edit db schema)
-- Add 'link to download extension' on Home page
-- Rewrite fetch calls as async/await
-  **_instead of grabbing all text - get individual paragraphs from Medium, other sites if possible_**
+- Add column: read (boolean) so user can mark as read (or push to next newsletter)
+- Show stats of Articles read per week/month/year
+- Update app & extension READMEs with download/use instructions
+- Add footer to Email
+- Better styling for popup status toast
+- Add toast notification when manually adding article through website
+- Set up new email account for Forget Me Not sender
+- look up how to web scrape images
+
+**instead of grabbing all text - get individual paragraphs from Medium, other sites if possible**
+**Weekly email Newsletter not sending - why?**
 
 STRETCH GOALS:
 
@@ -64,10 +75,4 @@ STRETCH GOALS:
 - Slashdot
 
 - Each component in its own folder with separate stylesheets & test files
-- Testing!
-
-FINAL DETAILS:
-
-- Add footer to Email
-- Better styling for popup status toast
-- New email account for Forget Me Not sender
+- Testing for React & Ruby
