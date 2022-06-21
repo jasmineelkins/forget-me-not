@@ -3,6 +3,8 @@ class NewslettersController < ApplicationController
 
   # GET /newsletters
   def index
+    # raise 'OH NO, forgot ENVS' unless ENV['SENDGRID_API_KEY']
+
     if params[:user_id] = session[:user_id]
       newsletters = Newsletter.where(user_id: params[:user_id])
       render json: newsletters, include: :articles
