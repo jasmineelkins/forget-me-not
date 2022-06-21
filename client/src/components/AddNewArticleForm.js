@@ -110,31 +110,22 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
 
   function handleWeeklyClick() {
     console.log("Button clicked - weekly");
-    // console.log(user.newsletters);
-
     createArticle("weekly");
   }
 
   function handleMonthlyClick() {
     console.log("Button clicked - monthly");
-    // console.log(user.newsletters);
-
     createArticle("monthly");
   }
 
-  function handleChange(e) {
-    // update URL in state from input
+  function handleInput(e) {
     setArticleURL(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // determine newsletter, scrape data etc
-
-    // POST new article to database
-
-    // update articleList => ReadingList
+    setArticleURL("");
   }
 
   return (
@@ -146,15 +137,16 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
             type="text"
             name="url"
             value={articleURL}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleInput(e)}
+            id="urlInput"
           ></input>
         </div>
 
         <div className="addButtonsContainer">
-          <button className="addBtn" onClick={handleWeeklyClick}>
+          <button className="addBtn" type="submit" onClick={handleWeeklyClick}>
             Add to Weekly Newsletter
           </button>
-          <button className="addBtn" onClick={handleMonthlyClick}>
+          <button className="addBtn" type="submit" onClick={handleMonthlyClick}>
             Add to Monthly Newsletter
           </button>
         </div>
