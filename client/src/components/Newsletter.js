@@ -2,27 +2,15 @@ import React, { useState, useEffect } from "react";
 import Article from "./Article";
 import PriorityArticle from "./PriorityArticle";
 import ArticleListItem from "./ArticleListItem";
-
 import BASE_URL from "../Config";
 
 function Newsletter({ user }) {
   const [articleList, setArticleList] = useState([]);
   const [priorityArticle, setPriorityArticle] = useState({});
-
-  // const [newsletterArticles, setNewsletterArticles] = useState([]);
   const [selectedFrequency, setSelectedFrequency] = useState("weekly");
+  const [currentNewsletter, setCurrentNewsletter] = useState({});
 
   const { id } = user;
-
-  // useEffect(() => {
-  //   fetch(`${BASE_URL}/users/${id}/articles`)
-  //     .then((res) => res.json())
-  //     .then((listOfSavedArticles) => {
-  //       console.log("Saved article list: ", listOfSavedArticles);
-  //       setArticleList(listOfSavedArticles);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // }, [id]);
 
   useEffect(() => {
     getUserArticles(selectedFrequency);
@@ -32,18 +20,24 @@ function Newsletter({ user }) {
     try {
       const response = await fetch(`${BASE_URL}/users/${id}/newsletters`);
       const newslettersArray = await response.json();
+      console.log("User's Newsletters", newslettersArray);
 
       // return newsletter of given frequency
-      const selectedNewsletter = newslettersArray.filter(
+      const selectedNewsletters = newslettersArray.filter(
         (nl) => nl.frequency === frequency
-      )[0];
-      console.log(selectedNewsletter.articles);
+      );
+
+      const [mostRecent] = selectedNewsletters.slice(-1);
+      setCurrentNewsletter(mostRecent);
+      console.log("Current Newsletter Articles", mostRecent.articles);
 
       // set articleList to articles of that newsletter
-      setArticleList(selectedNewsletter.articles);
+      setArticleList(mostRecent.articles);
 
       // set Priority article to first in list
-      setPriorityArticle(selectedNewsletter.articles[0]);
+      setPriorityArticle(mostRecent.articles[0]);
+      // if (selectedNewsletters) {
+      // }
     } catch (error) {
       console.log(error.message);
     }
@@ -81,11 +75,16 @@ function Newsletter({ user }) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  function handleManualSend() {
-    fetch(`${BASE_URL}/send_current_newsletter/${selectedFrequency}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error.message));
+  async function sendEmail() {
+    try {
+      const response = await fetch(
+        `${BASE_URL}/send_current_newsletter/${selectedFrequency}`
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   return (
@@ -104,13 +103,18 @@ function Newsletter({ user }) {
         </div>
 
         <div>
-          <button onClick={handleManualSend}>Send Newsletter</button>
+          <button onClick={sendEmail}>Send Newsletter</button>
         </div>
       </div>
       <div className="newsletter">
         <div className="newsletterHeader item1">
           <div className="newsletterHoroscope"></div>
-          <h3>{capitalizeFirstLetter(selectedFrequency)}</h3>
+
+          <div className="newsletterTitleDiv">
+            <h3>{capitalizeFirstLetter(selectedFrequency)}</h3>
+            <h4>{currentNewsletter ? currentNewsletter.publish_date : null}</h4>
+          </div>
+
           <div className="newsletterWeather"></div>
         </div>
 
@@ -119,6 +123,7 @@ function Newsletter({ user }) {
             <PriorityArticle
               key={priorityArticle.id}
               article={priorityArticle}
+              currentNewsletter={currentNewsletter}
             />
           ) : null}
         </div>

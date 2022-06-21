@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  resources :newsletters
-  resources :articles
-
-  resources :users, only: %i[index create show update] do
-    resources :articles, only: %i[index show create update delete]
-    resources :newsletters, only: %i[index show create update delete]
+  resources :newsletters do
+    resources :articles
   end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :articles
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users do
+    resources :articles
+    resources :newsletters
+  end
 
   get '/me', to: 'users#show'
   post '/signup', to: 'users#create'
@@ -20,16 +18,4 @@ Rails.application.routes.draw do
   get '/send_test', to: 'users#send_test_email'
   get '/send_current_newsletter/:frequency',
       to: 'newsletters#send_current_newsletter'
-
-  # serve the client’s index.html for any path that is not included in your client’s routes:
-  get '*path',
-      to: 'application#fallback_index_html',
-      constraints: ->(request) { !request.xhr? && request.format.html? }
-
-  # match "*all" => "application#cors_preflight_check", :constraints => { :method => "OPTIONS" }
-  # match "/alert" => "alerts#create"
-  # match "/alerts" => "alerts#get"
-  # match "/login" => "sessions#create"
-  # match "/logout" => "sessions#destroy"
-  # match "/register" => "users#create"
 end

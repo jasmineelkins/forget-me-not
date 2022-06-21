@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BsCheck2Square, BsSquare } from "react-icons/bs";
-
 import BASE_URL from "../Config";
 
 function Profile({ user, setUser }) {
@@ -20,28 +19,18 @@ function Profile({ user, setUser }) {
   const [profileFormData, setProfileFormData] = useState({
     defaultProfileForm,
   });
-  const [isChecked, setIsChecked] = useState(user.receive_newsletter);
+  const formattedBirthday = user.birthday ? user.birthday.slice(5, 10) : null;
 
   useEffect(() => {
-    fetch(`${BASE_URL}/users/${user.id}`)
-      .then((res) => res.json())
-      .then((currentUserObj) => {
-        // console.log("current user: ", currentUserObj);
-        setUser(currentUserObj);
-        setProfileFormData(defaultProfileForm);
-      })
-      .catch((error) => console.log(error.message));
-  }, [setUser, user.id]);
+    setProfileFormData(defaultProfileForm);
+  }, []);
 
-  function handleClick(e) {
-    // click to toggle form
+  function toggleForm() {
     setEditModeOff(false);
     console.log("edit mode ON");
   }
 
   function handleChange(e) {
-    // setIsChecked(!isChecked);
-
     console.log(e.target.value, e.target.type);
 
     if (e.target.type === "checkbox") {
@@ -62,34 +51,9 @@ function Profile({ user, setUser }) {
 
     console.log(profileFormData);
 
-    // UPDATE user info
-    fetch(`${BASE_URL}/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: profileFormData.name,
-        username: profileFormData.username,
-        about: profileFormData.about,
-        image:
-          "https://res.cloudinary.com/dbl7owtdh/image/upload/v1652387229/cartoon-cat-g3531c4ee5_1920_pwmyxe.png",
-        email: profileFormData.email,
-        location: profileFormData.location,
-        birthday: profileFormData.birthday,
-        receive_newsletter: profileFormData.receive_newsletter,
-      }),
-    })
-      .then((res) => res.json())
-      .then((updatedUserObj) => {
-        console.log("Updated user: ", updatedUserObj);
-        setUser(updatedUserObj);
-        setProfileFormData(updatedUserObj);
-      })
-      .catch((error) => console.log(error.message));
+    updateUser();
 
-    // reset form to show user data
+    // reset form to prefill user data
     setProfileFormData({
       name: profileFormData.name,
       username: profileFormData.username,
@@ -99,38 +63,45 @@ function Profile({ user, setUser }) {
       email: profileFormData.email,
       location: profileFormData.location,
       birthday: profileFormData.birthday,
-      receive_newsletter: isChecked,
+      receive_newsletter: profileFormData.receive_newsletter,
     });
 
     //turn off edit mode - back to profile, not form
     setEditModeOff(true);
   }
 
-  function handleCheckedClick(e) {
-    setIsChecked(!isChecked);
+  async function updateUser() {
+    try {
+      const response = await fetch(`${BASE_URL}/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: profileFormData.name,
+          username: profileFormData.username,
+          about: profileFormData.about,
+          image:
+            "https://res.cloudinary.com/dbl7owtdh/image/upload/v1652387229/cartoon-cat-g3531c4ee5_1920_pwmyxe.png",
+          email: profileFormData.email,
+          location: profileFormData.location,
+          birthday: profileFormData.birthday,
+          receive_newsletter: profileFormData.receive_newsletter,
+        }),
+      });
 
-    // PATCH checkbox input data
-    fetch(`${BASE_URL}/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3002",
-      },
-      body: JSON.stringify({
-        receive_newsletter: !isChecked,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("PATCH after checkbox: ", data))
-      .catch((error) => console.log(error.message));
+      const updatedUserObj = await response.json();
+      console.log("Updated user: ", updatedUserObj);
+      setUser(updatedUserObj);
+      setProfileFormData(updatedUserObj);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-
-  const formattedBirthday = user.birthday ? user.birthday.slice(5, 10) : null;
 
   return (
     <div className="profileContainer">
-      {/* <h2>Profile</h2> */}
       <img
         src="https://res.cloudinary.com/dbl7owtdh/image/upload/v1652387229/cartoon-cat-g3531c4ee5_1920_pwmyxe.png"
         alt="cartoon cat"
@@ -171,7 +142,9 @@ function Profile({ user, setUser }) {
           <div className="profileRow">
             <span className="profileLabel">Email</span>
             <div className="rightSpanDiv">
-              <span className="profileSpan">{user.email}</span>
+              <span id="userEmail" className="profileSpan">
+                {user.email}
+              </span>
             </div>
           </div>
 
@@ -181,14 +154,6 @@ function Profile({ user, setUser }) {
               <span className="profileSpan">
                 {user.receive_newsletter ? <BsCheck2Square /> : <BsSquare />}
               </span>
-              {/* <span className="profileSpan">
-                <input
-                  name="newsletter"
-                  type="checkbox"
-                  checked={user.receive_newsletter}
-                  onChange={(e) => handleChange(e)}
-                ></input>
-              </span> */}
             </div>
           </div>
 
@@ -199,7 +164,7 @@ function Profile({ user, setUser }) {
             </div>
           </div> */}
 
-          <button onClick={(e) => handleClick(e)}>Edit Profile</button>
+          <button onClick={() => toggleForm()}>Edit Profile</button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="profileForm">
@@ -248,19 +213,10 @@ function Profile({ user, setUser }) {
             ></input>
           </div>
 
-          {/* <div className="formRow">
+          <div className="formRow checkboxRow">
             <label>Email Newsletter?</label>
             <input
-              name="receive_newsletter"
-              type="text"
-              value={profileFormData.receive_newsletter}
-              onChange={(e) => handleChange(e)}
-            ></input>
-          </div> */}
-
-          <div className="formRow">
-            <label>Email Newsletter?</label>
-            <input
+              id="checkbox"
               name="receive_newsletter"
               type="checkbox"
               checked={

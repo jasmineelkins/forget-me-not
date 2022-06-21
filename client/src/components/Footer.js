@@ -7,7 +7,7 @@ function Footer(props) {
       <span>
         Designed & built by Jasmine Elkins{" "}
         <a
-          href="https://github.com/jasmineelkins"
+          href="https://github.com/jasmineelkins/forget-me-not"
           target="_blank"
           rel="noreferrer"
         >

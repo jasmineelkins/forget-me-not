@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import BASE_URL from "../Config";
 
 function ReadingListLink({ article, articleList, setArticleList }) {
@@ -8,19 +7,25 @@ function ReadingListLink({ article, articleList, setArticleList }) {
   function handleClick() {
     const { id } = article;
 
-    // DELETE article
-    fetch(`${BASE_URL}/articles/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const updatedArticleList = articleList.filter(
-          (article) => article.id !== id
-        );
-        setArticleList(updatedArticleList);
-      })
-      .catch((error) => console.log(error.message));
+    deleteArticle(id);
+  }
+
+  async function deleteArticle(id) {
+    try {
+      const response = await fetch(`${BASE_URL}/articles/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await response.json();
+
+      console.log(data);
+      const updatedArticleList = articleList.filter(
+        (article) => article.id !== id
+      );
+      setArticleList(updatedArticleList);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   // add a way from user to UPDATE article Read By date
