@@ -1,2 +1,2 @@
 source development.env
-rails s
+rails s -p 3001
