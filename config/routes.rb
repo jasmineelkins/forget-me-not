@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :newsletters
   end
 
+  # root 'main#index'
+  # get '*path' => 'main#index'
+
   get '/me', to: 'users#show'
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
