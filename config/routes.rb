@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   get '/send_test', to: 'users#send_test_email'
   get '/send_current_newsletter/:frequency',
       to: 'newsletters#send_current_newsletter'
+
+  get '*path',
+      to: 'application#fallback_index_html',
+      constraints: ->(request) { !request.xhr? && request.format.html? }
 end

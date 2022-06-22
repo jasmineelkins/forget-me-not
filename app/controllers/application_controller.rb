@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
   include ActionController::Cookies
 
   # serve client’s index.html for any path that is not included in your client’s routes:
