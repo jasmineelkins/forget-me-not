@@ -394,6 +394,23 @@ th:hover::after {
   font-size: 18px;
 }
 
+/* PROGRESS MESSAGE TOAST ---------------------------------------------------- */
+.toastContainer {
+  /* position: absolute;
+  min-width: 250px;
+  z-index: 1;
+  bottom: 100vh; */
+}
+
+.progressMessage {
+  text-align: center;
+  /* padding: 1em; */
+  border-radius: 15px;
+  margin: 5px;
+  position: relative;
+  min-width: 20rem;
+}
+
 /* PROFILE -------------------------------------------------------------------- */
 .profileContainer {
   display: flex;

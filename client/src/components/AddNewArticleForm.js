@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import BASE_URL from "../Config";
 
-function AddNewArticleForm({ user, articleList, setArticleList }) {
+function AddNewArticleForm({
+  user,
+  articleList,
+  setArticleList,
+  progressMessage,
+  setProgressMessage,
+}) {
   // const [loggedInUser, setLoggedInUser] = useState(null);
   const [articleURL, setArticleURL] = useState("");
-  const [progressMessage, setProgressMessage] = useState();
 
   // determine end of week & month for current day:
   function determineDates(frequency) {
@@ -74,7 +79,9 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
 
   // POST new article
   async function createArticle(frequency) {
-    setProgressMessage("Saving article");
+    setProgressMessage(
+      `Saving article to ${capitalizeFirstLetter(frequency)} Newsletter`
+    );
 
     try {
       const targetNewsletter = await getOrCreateNewsletter(frequency);
@@ -102,7 +109,7 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
 
       setProgressMessage("Article saved");
 
-      setTimeout(() => setProgressMessage(), 1000);
+      setTimeout(() => setProgressMessage(), 2000);
     } catch (error) {
       console.log(error.message);
     }
@@ -128,6 +135,10 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
     setArticleURL("");
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <div className="newArticleFormContainer">
       <form onSubmit={(e) => handleSubmit(e)} className="newArticleForm">
@@ -151,6 +162,23 @@ function AddNewArticleForm({ user, articleList, setArticleList }) {
           </button>
         </div>
       </form>
+
+      <div className="toastContainer" style={{ position: "relative" }}>
+        <div
+          className="progressMessage"
+          style={{
+            position: "absolute",
+            zIndex: 100,
+            top: 20,
+            left: 0,
+            right: 0,
+            transition: "1s ease all",
+            opacity: progressMessage ? 0.8 : 0,
+          }}
+        >
+          {progressMessage}
+        </div>
+      </div>
     </div>
   );
 }

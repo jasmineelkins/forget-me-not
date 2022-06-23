@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include ActionController::Cookies
 
+  skip_before_action :verify_authenticity_token
+
   # serve client’s index.html for any path that is not included in your client’s routes:
   def fallback_index_html
     render file: 'public/index.html'

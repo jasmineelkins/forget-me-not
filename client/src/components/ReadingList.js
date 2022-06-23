@@ -5,6 +5,7 @@ import BASE_URL from "../Config";
 
 function ReadingList({ user }) {
   const [articleList, setArticleList] = useState([]);
+  const [progressMessage, setProgressMessage] = useState();
 
   const { id } = user;
 
@@ -39,6 +40,8 @@ function ReadingList({ user }) {
         user={user}
         articleList={articleList}
         setArticleList={setArticleList}
+        progressMessage={progressMessage}
+        setProgressMessage={setProgressMessage}
       />
 
       {articleList.length === 0 ? (
@@ -60,6 +63,24 @@ function ReadingList({ user }) {
           </table>
         </div>
       )}
+
+      {/* <div className="toastContainer" style={{ position: "relative" }}>
+        <div
+          className="progressMessage"
+          style={{
+            position: "absolute",
+            zIndex: 100,
+            top: 20,
+            left: 0,
+            right: 0,
+            background: "white",
+            transition: "1s ease all",
+            opacity: progressMessage ? 0.8 : 0,
+          }}
+        >
+          {progressMessage}
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }
