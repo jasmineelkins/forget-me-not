@@ -52,12 +52,11 @@
 ![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639066/Forget%20Me%20Not/forget-me-not_vo92xm.png)
 
 #### Newsletter (viewed as email)
-![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657649984/Forget%20Me%20Not/email_newsletter_dv6sf0.png)
+![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657651160/Forget%20Me%20Not/email_newsletter_vktxrb.png)
 
 #### Wireframe
 ![Wireframe](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_Me_Not_wireframe_y7gwuh.png)
 
-<!-- If you have screenshots you'd like to share, include them here. -->
 
 ## Demo
 
