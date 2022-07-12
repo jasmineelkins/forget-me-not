@@ -43,7 +43,7 @@ List the ready features here:
 
 - Save articles to your custom reading list
 - Receive as a formatted email newsletter
-- Can be used with Chrome extension _in development mode only, see instructions below_
+- Can be used with Chrome extension ** _in development mode only, see instructions below_
 
 ## Screenshots
 
