@@ -39,16 +39,22 @@
 
 ## Features
 
-List the ready features here:
-
 - Save articles to your custom reading list
 - Receive as a formatted email newsletter
 - Can be used with Chrome extension ** _in development mode only, see instructions below_
 
 ## Screenshots
 
+#### Homepage + Extension
 ![Homepage + Extension](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_me_not_w_extension_v6ly8q.png)
+
+#### Newsletter (viewed on website)
 ![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639066/Forget%20Me%20Not/forget-me-not_vo92xm.png)
+
+#### Newsletter (viewed as email)
+![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657649984/Forget%20Me%20Not/email_newsletter_dv6sf0.png)
+
+#### Wireframe
 ![Wireframe](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_Me_Not_wireframe_y7gwuh.png)
 
 <!-- If you have screenshots you'd like to share, include them here. -->
@@ -79,9 +85,10 @@ npm start
 
 ## Usage
 
-Forget Me Not is designed to be used with a Chrome extension, which can access the URL of the current tab. The extension can be found here: and installed following the instructions in the README. You will need to use Chrome Dev and add the extension in Developer mode.
+Forget Me Not is designed to be used with a Chrome extension which can access the URL of the current tab. <a href="https://github.com/jasmineelkins/forget-me-not-extension" target="_blank">Click this link to access the extension repository</a> and follow the installation instructions in the README. You will need to use Chrome Dev and add the extension in Developer mode.
 
-Alternatively, there is a form at the top of the Reading List page where you can enter the URL of the page you want to save. This will achieve the same results without having to install the Chrome extension!
+Alternatively, there is a form embedded at the top of the Reading List page where you can enter the URL of the page you want to save. This will achieve the same results without having to install the Chrome extension!
+
 
 ## Project Status
 
@@ -91,8 +98,8 @@ Project is: _in progress_.
 
 Room for improvement:
 
-- Forget Me Not is deployed on Heroku, but the extension can not yet interact with this version. There is also a bug saving articles using the form in the deployed version- this is top priority to fix.
-- Adding sort & filter options to the reading list, to allow for more customization.
+- Forget Me Not is deployed on Heroku, but the extension can not yet interact with that version. There is also a bug while saving articles using the embedded form on Heroku- this is top priority to fix.
+- Adding sort & filter options to the reading list to allow for more customization.
 
 To do:
 
@@ -104,19 +111,13 @@ To do:
 ## Acknowledgements
 
 - This project was inspired by an idea from <a href="https://www.ideasgrab.com/ideas-1000-2000/" target="_blank">ideasgrab.com</a>:
-  > an app that takes the articles you saved to your reading list and sends them to you as a printed newspaper.
-  > I thought it would be a great technical challenge to learn how to both build the reading list _and_ send it to users as a digital newsletter, formatted in a style similar to an actual newspaper.
+  > "an app that takes the articles you saved to your reading list and sends them to you as a printed newspaper"
+I thought it would be a great technical challenge to learn how to both build the reading list _and_ send it to users as a digital newsletter, formatted in a style similar to an actual newspaper.
 - Many thanks to my instructor at Flatiron, Chett Tiller: for teaching me a solid foundation in React and Rails, and supporting and encouraging me not only on for this project, but throughout the entire 15-week program.
 
 ## Contact
 
 Created by [Jasmine Elkins](https://www.linkedin.com/in/jasmine-elkins/) - feel free to contact me!
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
 
 --
 
