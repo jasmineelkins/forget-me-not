@@ -8,13 +8,13 @@ function Login({ user, setUser }) {
 
   const [formData, setFormData] = useState(defaultFormState);
   const [passwordShown, setPasswordShown] = useState(false);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
 
   const passwordShownIcon =
     passwordShown === true ? <AiFillEye /> : <AiFillEyeInvisible />;
 
-  const errorsToDisplay = error === null ? null : error;
+  const errorsToDisplay = errors === null ? null : errors;
 
   function togglePassword(e) {
     e.preventDefault();
@@ -56,12 +56,12 @@ function Login({ user, setUser }) {
       if (userObj.username) {
         navigate("/");
         setUser(userObj);
-        setError(null);
+        setErrors(null);
       } else {
         if (userObj.error) {
-          setError(userObj.error.login);
+          setErrors(userObj.error.login);
         } else {
-          setError(null);
+          setErrors(null);
         }
 
         setUser(null);
@@ -100,9 +100,9 @@ function Login({ user, setUser }) {
           </button>
           <button type="submit">Submit</button>
         </div>
-
-        <span className="errorMessage">{errorsToDisplay}</span>
       </form>
+
+      <span className="errorMessage">{errorsToDisplay}</span>
     </div>
   );
 }

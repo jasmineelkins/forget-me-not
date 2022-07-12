@@ -13,7 +13,7 @@ function HomePage(props) {
           reading lists from Chrome. If you've ever saved a tab to the built-in
           reading list of your browser, you know you're probably never going to
           see it again. It falls into the abyss with the other 500 links you’ve
-          saved for “when you have more time” ...
+          saved for “when you have more time” ... but don't worry!
         </p>
 
         <p>

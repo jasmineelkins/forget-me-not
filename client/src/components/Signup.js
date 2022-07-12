@@ -129,9 +129,9 @@ function Signup({ user, setUser }) {
           </button>
           <button type="submit">Submit</button>
         </div>
-
-        <span className="errorMessage">{errorsToDisplay}</span>
       </form>
+
+      <span className="errorMessage">{errorsToDisplay}</span>
     </div>
   );
 }
