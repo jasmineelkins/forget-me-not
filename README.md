@@ -1,4 +1,4 @@
-# Forget Me Nnot
+# Forget Me Not
 
 > Forget Me Not is a React/Rails web application that allows you to save articles to a custom reading list and receive them in an email newsletter. You choose when you want to read them: that week or by the end of the month.
 > Live demo [_here_](https://vimeo.com/723854744/ea6d716679).
@@ -30,7 +30,7 @@
 - Ruby 2.7.4p191
 - Rails 7.0.3
 
-Ruby Gems:
+##### Ruby Gems:
 
 - bcrypt 3.1.7
 - watir 7.1.0
