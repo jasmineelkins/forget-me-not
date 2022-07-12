@@ -21,7 +21,7 @@
 
 - For my capstone project at the Flatiron School I wanted to build an app that was unique and functional, so I started thinking about the ways that I use technology and what could be improved. Something that immediately came to mind is the built-in reading list of our web browsers.
 - These built-in reading lists are not visually appealing. Everything is added to one list, with no option to set when you want to read an article. Forget Me Not allows you to choose when you would like to read the article and then receive your reading list as a newsletter sent at the end of each week and month. This way, you won't forget about the articles you've saved.
-- I built this project based on a real issue I've faced, and to challenge myself to design and build a fully functional app within 3 weeks. I used my foundation in React and Rails, and also learned how to build a Chrome extension, program custom web scrapers, and send formatted emails.
+- I built this project to solve an issue I've faced, and to challenge myself to design and build a fully functional app within 3 weeks. I used my foundation in React and Rails, and also learned how to build a Chrome extension, program custom web scrapers, and send formatted emails.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 ## Technologies Used
@@ -112,7 +112,6 @@ To do:
 
 - This project was inspired by an idea from <a href="https://www.ideasgrab.com/ideas-1000-2000/" target="_blank">ideasgrab.com</a>:
   > "an app that takes the articles you saved to your reading list and sends them to you as a printed newspaper"
-I thought it would be a great technical challenge to learn how to both build the reading list _and_ send it to users as a digital newsletter, formatted in a style similar to an actual newspaper.
 - Many thanks to my instructor at Flatiron, Chett Tiller: for teaching me a solid foundation in React and Rails, and supporting and encouraging me not only on for this project, but throughout the entire 15-week program.
 
 ## Contact
