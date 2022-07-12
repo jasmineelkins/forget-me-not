@@ -49,7 +49,7 @@
 ![Homepage + Extension](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_me_not_w_extension_v6ly8q.png)
 
 #### Newsletter (viewed on website)
-![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639066/Forget%20Me%20Not/forget-me-not_vo92xm.png)
+![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657651793/Forget%20Me%20Not/forget_me_not_newsletter_fclqq9.png)
 
 #### Newsletter (viewed as email)
 ![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657651160/Forget%20Me%20Not/email_newsletter_vktxrb.png)
