@@ -1,78 +1,123 @@
-Phase 5 Capstone Project: Newsletter Generator
+# Forget Me Nnot
 
-Using the Chrome extension, the user can click 'Add to weekly/monthly newsletter' to save an article to their collection. At the end of every week and every month they will receive an email newsletter with all the articles they have saved. If a user prefers to opt out of receiving emails, they can also view their Newsletters on the web app.
-Behind the scenes: when the user clicks 'Add to newsletter', the backend checks if an unsent newsletter for that frequency exists. If it does, the article will be saved to that Newsletter; if not, a new Newsletter is created for the user and the article is saved to that. Once a Newsletter is sent, the status is updated in the database and new articles will not be added to that Newsletter any more.
-From the web app, the user can view all saved articles in their Reading List, which will show the date the article will be sent. The user can edit this reading list and remove articles from their Newsletters.
+> Forget Me Not is a React/Rails web application that allows you to save articles to a custom reading list and receive them in an email newsletter. You choose when you want to read them: that week or by the end of the month.
+> Live demo [_here_](https://vimeo.com/723854744/ea6d716679).
 
-TODO LIST:
+## Table of Contents
 
-- _DONE_ Build a Chrome extension that console logs URL of current tab
-- _DONE_ Extension can create a new Article in database, using current URL
-- _DONE_ Build backend & front end with User Auth: Signup & Login
-- _DONE_ Extension can get current user from local storage session
-- _DONE_ New User automatically creates default Newsletter to that user_id
-- _DONE_ Extension can create a new Article for currently logged in user, saving to default Newsletter
-- _DONE_ User can view all saved Articles as "Reading List"
-- _DONE_ Extension shows username OR link to site to log-in
-- _DONE_ Extension has link to open Newsletter web app in new tab
-- _DONE_ Reading List shows article title, URL, Read-by date
-- _DONE_ User can delete Articles from Reading List
-- _DONE_ Extension sets default read-by date to end of current week
-- _DONE_ Logout should Navigate back to Homepage
-- _DONE_ Profile edit PATCH not updating: fix
-- _DONE_ Reading list not working.. fix
-- _DONE_ Reading List renders as table
-- _DONE_ Scrape data from Medium to show article title and first paragraph..
-- _DONE_ User can choose frequency: weekly or monthly
-- _DONE_ Login should Navigate directly to user Newsletter **Or to Random full article?**
-- _DONE_ add link to open articles from Newsletter
-- _DONE_ Footer with my info
-- _DONE_ Rewrite fetch calls as async/await
-- _DONE_ Add 'link to download extension' on Home page
-- User can edit Articles on Reading List - at least the read-by date/Newsletter
-- User can view full individual Article through web app (Randomly generated?)
-- Reformat birthday display (but can't affect form/backend)
-- User can mark an Article as 'complete' - moves to another default table: 'Completed' ?
-- Next feature: push to top to make sure will be included in next version, or push to bottom
-- Also save alt text when grabbing image urls (edit db schema)
-- Add column: read (boolean) so user can mark as read (or push to next newsletter)
-- Show stats of Articles read per week/month/year
-- Update app & extension READMEs with download/use instructions
-- Add footer to Email
-- Better styling for popup status toast
-- Add toast notification when manually adding article through website
-- Set up new email account for Forget Me Not sender
-- look up how to web scrape images
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+<!-- * [License](#license) -->
 
-**instead of grabbing all text - get individual paragraphs from Medium, other sites if possible**
-**Weekly email Newsletter not sending - why?**
+## General Information
 
-STRETCH GOALS:
+- For my capstone project at the Flatiron School I wanted to build an app that was unique and functional, so I started thinking about the ways that I use technology and what could be improved. Something that immediately came to mind is the built-in reading list of our web browsers.
+- These built-in reading lists are not visually appealing. Everything is added to one list, with no option to set when you want to read an article. Forget Me Not allows you to choose when you would like to read the article and then receive your reading list as a newsletter sent at the end of each week and month. This way, you won't forget about the articles you've saved.
+- I built this project based on a real issue I've faced, and to challenge myself to design and build a fully functional app within 3 weeks. I used my foundation in React and Rails, and also learned how to build a Chrome extension, program custom web scrapers, and send formatted emails.
+<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
-- _DONE_ User can log in directly through extension popup
-- _DONE_ User can save title, source, URL of any website
-- _DONE_ User can select 'receive email newsletter' - updates backend boolean
-- _DONE_ User receives currently selected email Newsletter manually (on click)
-- _DONE_ Email Newsletter is formatted like the website
-- _DONE_ Email: Iterate through all articles instead of hardcoding
-- _DONE_ Toast when article is saved to Reading List/Newsletter
-- User receives email Newsletter at set time (Cron job?)
-- Add logic to automatically update sent to true after^
-- User can mark one article as "priority", which makes it headliner in next Newsletter edition (from specific sites only)
-- Reading List & Newsletter re-render automatically when backend updated (Firebase? Sockets?)
-- User can choose how many articles to receive (next: how much content/reading time)
-- User can see a randomly chosen Article from the database (home page?)
-- Deploy to heroku
-- Publish extension to Chrome store
-- Change Profile form to click each individual input to update..
+## Technologies Used
 
-- Get horoscope from API - add to header if user enters birthday
-- Get local weather from API - add to header if user enters location
+- React 18.1.0
+- Ruby 2.7.4p191
+- Rails 7.0.3
 
-- Write scrapers for other websites besides Medium:
-- _DONE_ New Yorker
-- New York Times
-- Slashdot
+Ruby Gems:
 
-- Each component in its own folder with separate stylesheets & test files
-- Testing for React & Ruby
+- bcrypt 3.1.7
+- watir 7.1.0
+- nokogiri 1.13.6
+- pg 1.3.5
+
+## Features
+
+List the ready features here:
+
+- Save articles to your custom reading list
+- Receive as a formatted email newsletter
+- Can be used with Chrome extension _in development mode only, see instructions below_
+
+## Screenshots
+
+![Homepage + Extension](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_me_not_w_extension_v6ly8q.png)
+![Newsletter](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639066/Forget%20Me%20Not/forget-me-not_vo92xm.png)
+![Wireframe](https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639054/Forget%20Me%20Not/Forget_Me_Not_wireframe_y7gwuh.png)
+
+<!-- If you have screenshots you'd like to share, include them here. -->
+
+## Demo
+
+<a href="https://vimeo.com/723854744/ea6d716679
+" target="_blank"><img src="https://res.cloudinary.com/dbl7owtdh/image/upload/v1657639053/Forget%20Me%20Not/intro_image_jrc0hn.png" 
+alt="Forget Me Not intro screen" width="240" height="180" border="10" /></a>
+
+## Setup
+
+To get started:
+
+1. Clone this repository
+2. Install dependencies
+3. Start rails server and start react app
+
+```
+cd forget-me-not
+bundle install
+rails s
+
+cd client
+npm install
+npm start
+```
+
+## Usage
+
+Forget Me Not is designed to be used with a Chrome extension, which can access the URL of the current tab. The extension can be found here: and installed following the instructions in the README. You will need to use Chrome Dev and add the extension in Developer mode.
+
+Alternatively, there is a form at the top of the Reading List page where you can enter the URL of the page you want to save. This will achieve the same results without having to install the Chrome extension!
+
+## Project Status
+
+Project is: _in progress_.
+
+## Room for Improvement
+
+Room for improvement:
+
+- Forget Me Not is deployed on Heroku, but the extension can not yet interact with this version. There is also a bug saving articles using the form in the deployed version- this is top priority to fix.
+- Adding sort & filter options to the reading list, to allow for more customization.
+
+To do:
+
+- Set up automatic email delivery according to frequency.
+- Include horoscope and local weather based on user information.
+- Add web scrapers for additional sources.
+- Publish the extension in the Chrome store.
+
+## Acknowledgements
+
+- This project was inspired by an idea from <a href="https://www.ideasgrab.com/ideas-1000-2000/" target="_blank">ideasgrab.com</a>:
+  > an app that takes the articles you saved to your reading list and sends them to you as a printed newspaper.
+  > I thought it would be a great technical challenge to learn how to both build the reading list _and_ send it to users as a digital newsletter, formatted in a style similar to an actual newspaper.
+- Many thanks to my instructor at Flatiron, Chett Tiller: for teaching me a solid foundation in React and Rails, and supporting and encouraging me not only on for this project, but throughout the entire 15-week program.
+
+## Contact
+
+Created by [Jasmine Elkins](https://www.linkedin.com/in/jasmine-elkins/) - feel free to contact me!
+
+<!-- Optional -->
+<!-- ## License -->
+<!-- This project is open source and available under the [... License](). -->
+
+<!-- You don't have to include all sections - just the one's relevant to your project -->
+
+--
+
+Use the app here: https://jasmineelkins-forget-me-not.herokuapp.com/
