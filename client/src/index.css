@@ -157,12 +157,14 @@ button:active {
 
 /* NAVBAR --------------------------------------------------------- */
 .navBarContainer {
+  /* border: 2px solid red; */
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   font-size: 14px;
-  width: 100%;
+  width: 98%;
   padding-top: 1em;
+  padding-right: 30px;
 }
 
 .welcomeMessage {
@@ -273,7 +275,7 @@ button:active {
   color: tomato;
   font-style: italic;
   font-weight: normal;
-  /* font-size: smaller; */
+  font-size: smaller;
   text-align: center;
 }
 
